@@ -1,0 +1,100 @@
+<html>
+<head>
+<title></title>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+
+<style>
+hr
+{
+	 display: block;
+	margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 2px;
+}
+form.first
+{
+	text-align: center;
+	border-radius: 5px;
+    background-color: #cccccc;
+    padding: 40px;
+}
+input[type=text], select {
+    width: 50%;
+    padding: 5px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=time], select {
+    width: 50%;
+    padding: 5px 20px;
+    margin: 6px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+</style>
+</head>
+<body>
+<h2 style="color:#737373;">Form</h2>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li style="font-size:25px"><a href="#">SAG Portal</a></li> 
+          <li><a href="index.php">Home</a></li>
+          <!--<li><a href="#">Contact us</a></li>-->
+        </ul>
+        
+      </div>
+    </div>
+  </nav>
+<div class="row">
+<div class="col-md-4">
+</div>
+<div class="col-md-4">
+<form class="first">
+  <label for="fname">&#160&#160 &#160 &#160 &#160 &#160 &#160&#160 Name:</label>
+  <input type="text" id="fname" name="fname"><br>
+  <label for="fname">&#160&#160 &#160 &#160  &#160 &#160 &#160Hostel:</label>
+  <input type="text" id="lname" name="lname"><br>
+  <label for="fname">&#160&#160 &#160 &#160Room No.:</label>
+  <input type="text" id="lname" name="lname"><br>
+  <label for="fname">&#160&#160Contact No. :</label>
+  <input type="text" id="lname" name="lname" maxlength="10"><br>
+  <label for="fname">Prefered time :</label>
+  <input type="time" id="lname" name="usr_time"><br>
+  <h4>Select your problem</h4>
+
+<select name="dropdown">
+<option value="fan stopped working" selected>fan stopped working</option>
+<option value="tubes/bulbs">tubes/bulbs</option>
+<option value="sockets/switch boards">sockets/switch boards</option>
+<option value="Others">Others</option>
+</select>
+ <h4>Describr your problem here</h4>
+ <p>(not more than 50 words)</p>
+<textarea rows="5" cols="50" name="description" maxlength="200">
+</textarea>
+</form>
+<button type="button" class="btn btn-success btn-block">Submit</button>
+</div>
+<div class="col-md-4">
+</div>
+</body>
+</html>
