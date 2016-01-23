@@ -105,11 +105,11 @@ p.mid1
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
           <li style="font-size:25px"><a href="#">SAG Portal</a></li> 
-          <li class="active"><a href="index.php">Home</a></li>
+          <li class="active"><a href="#">Home</a></li>
           <!--<li><a href="#">Contact us</a></li>-->
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="user_controller/login"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+          <li><a href="auth/logout"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
           <!-- <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
         </ul>
       </div>
@@ -135,20 +135,24 @@ p.mid1
     <div class="dropdown">
   <button class="dropbtn">Hostel Services</button>
   <div class="dropdown-content">
-    <a href="#">Electricity problems</a>
-    <a href="#">Plumber problems</a>
-    <a href="#">Lan problems</a>
-    <a href="">Carpenter problems</a>
+    <a href="user_controller/electrician">Electricity problems</a>
+    <a href="user_controller/plumber">Plumber problems</a>
+    <a href="user_controller/lan">Lan problems</a>
+    <a href="user_controller/carpenter">Carpenter problems</a>
   </div>
 </div>
   <br>
   <br/>
   <br/>
-  <button class="button">Hostel Grievances</button>
+  <a href="user_controller/hostelg">
+    <button class="button">Hostel Grievances</button>
+  </a>
 <br>
 <br/>
 <br/>
-<button class="button">Mess Grievances</button><br>
+<a href="user_controller/messg">
+  <button class="button">Mess Grievances</button><br>
+</a>
 
   </div>
      
