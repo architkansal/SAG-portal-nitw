@@ -43,9 +43,9 @@ input[type=time], select {
 </style>
 </head>
 <body>
-<h2 style="color:#737373;">Form</h2>
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
+  <div class="container-fluid">
+    <h2 style="color:#737373;">Form</h2>
+    <nav class="navbar navbar-inverse">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
           <span class="icon-bar"></span>
@@ -61,40 +61,43 @@ input[type=time], select {
         </ul>
         
       </div>
-    </div>
   </nav>
-<div class="row">
-<div class="col-md-4">
-</div>
-<div class="col-md-4">
-<form class="first">
-  <label for="fname">&#160&#160 &#160 &#160 &#160 &#160 &#160&#160 Name:</label>
-  <input type="text" id="fname" name="fname"><br>
-  <label for="fname">&#160&#160 &#160 &#160  &#160 &#160 &#160Hostel:</label>
-  <input type="text" id="lname" name="lname"><br>
-  <label for="fname">&#160&#160 &#160 &#160Room No.:</label>
-  <input type="text" id="lname" name="lname"><br>
-  <label for="fname">&#160&#160Contact No. :</label>
-  <input type="text" id="lname" name="lname" maxlength="10"><br>
-  <label for="fname">Prefered time :</label>
-  <input type="time" id="lname" name="usr_time"><br>
-  <h4>Select your problem</h4>
 
-<select name="dropdown">
-<option value="door/window locks" selected>door/window locks</option>
-<option value="cupboard problems/locks">cupboard problems/locks</option>
-<option value="window glasses">window glasses</option>
-<option vlaue="table/chair/bed problem">table/chair/bed problem</option>
-<option value="Others">Others</option>
-</select>
-<h4>Describr your problem here</h4>
- <p>(not more than 50 words)</p>
-<textarea rows="5" cols="50" name="description" maxlength="200">
-</textarea>
-</form>
-<button type="button" class="btn btn-success btn-block">Submit</button>
+<!-- <div class ="container-fluid"> -->
+    <div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+    <form class="first">
+      <label for="fname">&#160&#160 &#160 &#160 &#160 &#160 &#160&#160 Name:</label>
+      <input type="text" id="fname" name="fname"><br>
+      <label for="fname">&#160&#160 &#160 &#160  &#160 &#160 &#160Hostel:</label>
+      <input type="text" id="lname" name="lname"><br>
+      <label for="fname">&#160&#160 &#160 &#160Room No.:</label>
+      <input type="text" id="lname" name="lname"><br>
+      <label for="fname">&#160&#160Contact No. :</label>
+      <input type="text" id="lname" name="lname" maxlength="10"><br>
+      <label for="fname">Prefered time :</label>
+      <input type="time" id="lname" name="usr_time"><br>
+      <h4>Select your problem</h4>
+
+    <select name="dropdown">
+    <option value="door/window locks" selected>door/window locks</option>
+    <option value="cupboard problems/locks">cupboard problems/locks</option>
+    <option value="window glasses">window glasses</option>
+    <option vlaue="table/chair/bed problem">table/chair/bed problem</option>
+    <option value="Others">Others</option>
+    </select>
+    <h4>Describr your problem here</h4>
+     <p>(not more than 50 words)</p>
+    <textarea rows="5" cols="30" name="description" maxlength="200">
+    </textarea>
+    </form>
+    <button type="button" class="btn btn-success btn-block">Submit</button>
+    </div>
+    <div class="col-md-4">
+    </div>
 </div>
-<div class="col-md-4">
 </div>
 </body>
 </html>
