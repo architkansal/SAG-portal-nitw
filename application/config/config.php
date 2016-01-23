@@ -22,7 +22,7 @@
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost:8088/service/';
+$config['base_url'] = 'http://localhost/SAG-portal-nitw/';
 
 /*
 |--------------------------------------------------------------------------
