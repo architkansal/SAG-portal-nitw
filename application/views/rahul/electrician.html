@@ -8,16 +8,16 @@
 <style>
 hr
 {
-	 display: block;
-	margin-left: auto;
+   display: block;
+  margin-left: auto;
     margin-right: auto;
     border-style: inset;
     border-width: 2px;
 }
 form.first
 {
-	text-align: center;
-	border-radius: 5px;
+  text-align: center;
+  border-radius: 5px;
     background-color: #cccccc;
     padding: 40px;
 }
@@ -58,10 +58,14 @@ input[type=time], select {
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
           <li style="font-size:25px"><a href="#">SAG Portal</a></li> 
-          <li><a href="index.php">Home</a></li>
+          <li><a href="http://localhost/SAG-portal-nitw/index.php/user_controller">Home</a></li>
           <!--<li><a href="#">Contact us</a></li>-->
         </ul>
-        
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="../auth/logout"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+          <!-- <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
+        </ul>
+
       </div>
   
   </nav>
@@ -69,31 +73,31 @@ input[type=time], select {
 <div class="col-md-4">
 </div>
 <div class="col-md-4">
-<form class="first">
+<form class="first" method="post" action="submit_complaint?hcdid=111">
   <label for="fname">&#160&#160 &#160 &#160 &#160 &#160 &#160&#160 Name:</label>
-  <input type="text" id="fname" name="fname"><br>
+  <input type="text" id="fname" name="sname"><br>
   <label for="fname">&#160&#160 &#160 &#160  &#160 &#160 &#160Hostel:</label>
-  <input type="text" id="lname" name="lname"><br>
+  <input type="text" id="lname" name="hostel"><br>
   <label for="fname">&#160&#160 &#160 &#160Room No.:</label>
-  <input type="text" id="lname" name="lname"><br>
+  <input type="text" id="lname" name="room_no"><br>
   <label for="fname">&#160&#160Contact No. :</label>
-  <input type="text" id="lname" name="lname" maxlength="10"><br>
+  <input type="text" id="lname" name="contact" maxlength="10"><br>
   <label for="fname">Prefered time :</label>
   <input type="time" id="lname" name="usr_time"><br>
   <h4>Select your problem</h4>
-
 <select name="dropdown">
 <option value="fan stopped working" selected>fan stopped working</option>
 <option value="tubes/bulbs">tubes/bulbs</option>
 <option value="sockets/switch boards">sockets/switch boards</option>
 <option value="Others">Others</option>
 </select>
- <h4>Describr your problem here</h4>
+ <h4>Describe your problem here</h4>
  <p>(not more than 50 words)</p>
 <textarea rows="5" cols="30" name="description" maxlength="200">
-</textarea>
+</textarea><br><br> 
+<input type="submit" value="submit" class="btn btn-success btn-block">
 </form>
-<button type="button" class="btn btn-success btn-block">Submit</button>
+
 </div>
 <div class="col-md-4">
 </div>
