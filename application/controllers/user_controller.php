@@ -45,4 +45,10 @@ class user_controller extends CI_Controller
 		$this->load->view('rahul/messg.html');
 	}
 
+	function submit_complaint()   ///complaint form submit
+	{
+		$this->load->model('user_model');
+		$this->user_model->reg_complaint();
+	}
+
 }
