@@ -94,6 +94,7 @@ class Auth extends CI_Controller
 					$data['captcha_html'] = $this->_create_captcha();
 				}
 			}
+			// $this->load->view('templates/header');
 			$this->load->view('auth/login_form', $data);
 		}
 	}
@@ -118,7 +119,8 @@ class Auth extends CI_Controller
 	function register()
 	{
 		if ($this->tank_auth->is_logged_in()) {									// logged in
-			redirect('');
+			// redirect('');
+			redirect('/user_controller/');
 
 		} elseif ($this->tank_auth->is_logged_in(FALSE)) {						// logged in, not activated
 			redirect('/auth/send_again/');
@@ -131,6 +133,7 @@ class Auth extends CI_Controller
 			if ($use_username) {
 				$this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean|min_length['.$this->config->item('username_min_length', 'tank_auth').']|max_length['.$this->config->item('username_max_length', 'tank_auth').']|alpha_dash');
 			}
+			$this->form_validation->set_rules('name', 'name', 'trim|required|xss_clean|valid_name');
 			$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|valid_email');
 			$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|min_length['.$this->config->item('password_min_length', 'tank_auth').']|max_length['.$this->config->item('password_max_length', 'tank_auth').']|alpha_dash');
 			$this->form_validation->set_rules('confirm_password', 'Confirm Password', 'trim|required|xss_clean|matches[password]');
@@ -148,12 +151,16 @@ class Auth extends CI_Controller
 
 			$email_activation = $this->config->item('email_activation', 'tank_auth');
 
+			// change made ,!!!!!!!!!!!!!
+
+// echo $this->form_validation->set_value('contact');
 			if ($this->form_validation->run()) {								// validation ok
 				if (!is_null($data = $this->tank_auth->create_user(
 						$use_username ? $this->form_validation->set_value('username') : '',
 						$this->form_validation->set_value('email'),
 						$this->form_validation->set_value('password'),
-						$email_activation))) {									// success
+						$email_activation , $this->form_validation->set_value('name'),
+						$this->form_validation->set_value('mob')))) {									// success
 
 					$data['site_name'] = $this->config->item('website_name', 'tank_auth');
 

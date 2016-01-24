@@ -17,6 +17,20 @@ $email = array(
 	'maxlength'	=> 80,
 	'size'	=> 30,
 );
+$name = array(
+    'name'  => 'name',
+    'id'    => 'name',
+    'value' => set_value('name'),
+    'maxlength' => 80,
+    'size'  => 30,
+);
+$mob = array(
+    'mob'  => 'mob',
+    'id'    => 'mob',
+    'value' => set_value('mob'),
+    'maxlength' =>  80,
+    'size'  => 30,
+);
 $password = array(
 	'name'	=> 'password',
 	'id'	=> 'password',
@@ -44,6 +58,8 @@ $captcha = array(
         <title><?php echo $tankstrap["register_page_title"];?></title>
     </head>
     <body>
+
+        
 	<div class="container">
 		<div class="row">
 			<div class="span6 offset3">
@@ -54,7 +70,7 @@ $captcha = array(
 
 	<?php if ($use_username): ?>
 	<div class="control-group">
-        <?php echo form_label('Username', $username['id'], array('class' => 'control-label')); ?>
+        <?php echo form_label('Registration No.', $username['id'], array('class' => 'control-label')); ?>
         <div class="controls">
             <?php echo form_error('username'); ?>                                
             <?php echo form_input($username); ?><br />
@@ -63,7 +79,23 @@ $captcha = array(
     </div>
 	<?php endif; ?>
     <div class="control-group">
-        <?php echo form_label('Contact E-mail', $email['id'], array('class' => 'control-label')); ?>
+        <?php echo form_label('Name', $name['id'], array('class' => 'control-label')); ?>
+        <div class="controls">
+            <?php echo form_error('name'); ?>                                
+            <?php echo form_input($name); ?><br />
+            <p class="help-block"></p>
+        </div>
+    </div>
+    <div class="control-group">
+        <?php echo form_label('Contact No.', $mob['id'], array('class' => 'control-label')); ?>
+        <div class="controls">
+            <?php echo form_error('mob'); ?>                                
+            <?php echo form_input($mob); ?><br />
+            <p class="help-block"></p>
+        </div>
+    </div>
+    <div class="control-group">
+        <?php echo form_label('Email Address', $email['id'], array('class' => 'control-label')); ?>
         <div class="controls">
             <?php echo form_error('email'); ?>                                
             <?php echo form_input($email); ?><br />

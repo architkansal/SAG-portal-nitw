@@ -159,7 +159,7 @@ class Tank_auth
 	 * @param	bool
 	 * @return	array
 	 */
-	function create_user($username, $email, $password, $email_activation)
+	function create_user($username, $email, $password, $email_activation,$name,$mob)//change1!
 	{
 		if ((strlen($username) > 0) AND !$this->ci->users->is_username_available($username)) {
 			$this->error = array('username' => 'auth_username_in_use');
@@ -179,6 +179,10 @@ class Tank_auth
 				'password'	=> $hashed_password,
 				'email'		=> $email,
 				'last_ip'	=> $this->ci->input->ip_address(),
+				'name'   	=> $name,
+				'contact'   => $mob,
+				// 'contact'	=> '9874563210',
+				// 'name'      => 'archit kansal',
 			);
 
 			if ($email_activation) {
