@@ -88,11 +88,12 @@ $captcha = array(
     </div>
     <div class="control-group">
         <?php echo form_label('Contact No.', $mob['id'], array('class' => 'control-label')); ?>
-        <div class="controls">
+       <!--  <div class="controls">
             <?php echo form_error('mob'); ?>                                
             <?php echo form_input($mob); ?><br />
             <p class="help-block"></p>
-        </div>
+        </div> -->
+        <input type="text" name="mob">
     </div>
     <div class="control-group">
         <?php echo form_label('Email Address', $email['id'], array('class' => 'control-label')); ?>
