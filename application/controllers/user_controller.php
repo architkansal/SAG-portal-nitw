@@ -12,9 +12,21 @@ class user_controller extends CI_Controller
 
 	function index()
 	{
-		// $data['user_id'] = $this->tank_auth->get_user_id();
-		$this->load->view('rahul/login.html');
-
+		if($this->tank_auth->is_logged_in())
+		{
+			$this->load->model('user_model');
+			$group_id=$this->user_model->group_id();
+			// echo $group_id;
+			if($group_id==0)
+				$this->load->view('rahul/login.html');
+			else if($group_id==1)
+				$this->load->view('rahul/admin.html');
+		}
+		else
+	 	{
+			redirect('/auth/login/');
+		}
+	
 	}
 
 	function electrician()
