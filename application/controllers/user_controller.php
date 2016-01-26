@@ -12,8 +12,8 @@ class user_controller extends CI_Controller
 
 	function index()
 	{
-		$data['user_id'] = $this->tank_auth->get_user_id();
-		$this->load->view('rahul/login.html',$data);
+		// $data['user_id'] = $this->tank_auth->get_user_id();
+		$this->load->view('rahul/login.html');
 	}
 
 	function electrician()

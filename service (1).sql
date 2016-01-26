@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 23, 2016 at 09:22 PM
+-- Generation Time: Jan 26, 2016 at 10:59 AM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -39,15 +39,9 @@ CREATE TABLE `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('270d83dc2df468b09ff2d8b0e42621b4', '127.0.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36', 1453572897, 'a:4:{s:9:"user_data";s:0:"";s:7:"user_id";s:1:"5";s:8:"username";s:12:"architkansal";s:6:"status";s:1:"1";}'),
-('35a9661abdf5f888e72b72f03fd02961', '127.0.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36', 1453579262, ''),
-('4021c7119cfb02aa48d293b412fad043', '127.0.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36', 1453575920, 'a:4:{s:9:"user_data";s:0:"";s:7:"user_id";s:1:"5";s:8:"username";s:12:"architkansal";s:6:"status";s:1:"1";}'),
-('69a4c4197b26b67a0534b40940590cef', '127.0.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36', 1453576700, 'a:4:{s:9:"user_data";s:0:"";s:7:"user_id";s:1:"5";s:8:"username";s:12:"architkansal";s:6:"status";s:1:"1";}'),
-('a371e4ac2b6cb232f524a91dcc4ea407', '127.0.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36', 1453573826, 'a:4:{s:9:"user_data";s:0:"";s:7:"user_id";s:1:"5";s:8:"username";s:12:"architkansal";s:6:"status";s:1:"1";}'),
-('a789fafdf2c875af4ffd9be298897438', '127.0.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36', 1453572510, 'a:4:{s:9:"user_data";s:0:"";s:7:"user_id";s:1:"5";s:8:"username";s:12:"architkansal";s:6:"status";s:1:"1";}'),
-('b3211743ed7e9d4a2dfcfda07e92e52d', '127.0.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36', 1453572570, 'a:4:{s:9:"user_data";s:0:"";s:7:"user_id";s:1:"5";s:8:"username";s:12:"architkansal";s:6:"status";s:1:"1";}'),
-('d86a1bcfb0019a6ce5b55731a30a029b', '127.0.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36', 1453572367, 'a:4:{s:9:"user_data";s:0:"";s:7:"user_id";s:1:"5";s:8:"username";s:12:"architkansal";s:6:"status";s:1:"1";}'),
-('d93895295ec25406e8429014523f94fb', '127.0.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36', 1453572822, 'a:4:{s:9:"user_data";s:0:"";s:7:"user_id";s:1:"5";s:8:"username";s:12:"architkansal";s:6:"status";s:1:"1";}');
+('62777d6f19c5f5bdbfeab676d34589db', '127.0.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36', 1453802070, ''),
+('68e2293692e1823c174d00414013bc98', '127.0.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36', 1453801584, 'a:4:{s:9:"user_data";s:0:"";s:7:"user_id";s:1:"5";s:8:"username";s:12:"architkansal";s:6:"status";s:1:"1";}'),
+('e97d3c841d86a029e3e2948aeef19775', '127.0.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36', 1453802312, 'a:4:{s:9:"user_data";s:0:"";s:7:"user_id";s:1:"5";s:8:"username";s:12:"architkansal";s:6:"status";s:1:"1";}');
 
 -- --------------------------------------------------------
 
@@ -56,29 +50,26 @@ INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activ
 --
 
 CREATE TABLE `complaint` (
-  `userid` bigint(6) NOT NULL,
   `cid` bigint(10) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `hcdid` int(6) NOT NULL,
   `preftime` varchar(10) DEFAULT NULL,
   `room` varchar(6) NOT NULL,
   `hostel` varchar(20) NOT NULL,
   `mobile` bigint(10) NOT NULL,
-  `status` int(2) NOT NULL DEFAULT '0'
+  `status` int(2) NOT NULL DEFAULT '0',
+  `tag_id` int(5) NOT NULL,
+  `details` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `description`
+-- Dumping data for table `complaint`
 --
 
-CREATE TABLE `description` (
-  `hcdid` int(6) NOT NULL,
-  `tag` varchar(50) NOT NULL,
-  `details` varchar(300) NOT NULL,
-  `cid` bigint(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `complaint` (`cid`, `user_id`, `date`, `hcdid`, `preftime`, `room`, `hostel`, `mobile`, `status`, `tag_id`, `details`) VALUES
+(12, 5, '2016-01-26 09:56:51', 11, '16:04', '8-3-13', '8th Block', 9908324532, 0, 11002, 'x'),
+(13, 5, '2016-01-26 09:57:40', 33, '16:04', '8-3-13', '8th Block', 9908324532, 0, 33002, 'hgxj eytzshhhhhhhhhhhhhhhhhhhh 199999999999999999');
 
 -- --------------------------------------------------------
 
@@ -89,8 +80,7 @@ CREATE TABLE `description` (
 CREATE TABLE `hdepartment` (
   `hcdid` int(6) NOT NULL,
   `dname` varchar(20) NOT NULL,
-  `inc_name` varchar(50) NOT NULL,
-  `inc_contact` bigint(10) NOT NULL
+  `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -109,32 +99,14 @@ CREATE TABLE `login_attempts` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Table structure for table `tag_info`
 --
 
-CREATE TABLE `user` (
-  `userid` bigint(6) NOT NULL,
-  `password` varchar(20) NOT NULL,
-  `name` varchar(20) NOT NULL,
-  `course` varchar(10) NOT NULL,
-  `year` int(2) NOT NULL,
-  `contact` bigint(10) NOT NULL,
-  `user_group_id` int(5) NOT NULL DEFAULT '0'
+CREATE TABLE `tag_info` (
+  `tag_id` int(5) NOT NULL,
+  `tag_desc` varchar(30) NOT NULL,
+  `tag_count` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`userid`, `password`, `name`, `course`, `year`, `contact`, `user_group_id`) VALUES
-(811411, 'rajiv', 'Rahul', 'btech', 2, 9177330341, 0),
-(811437, '811437', 'akash', 'btech', 2, 9866015990, 0),
-(811442, 'amrita', 'Archit Kansal', 'B.Tech', 2, 9908341446, 1),
-(811443, 'amrita123', 'Prasad Patil ', 'B.Tech', 2, 7387901034, 0),
-(831414, '831414', 'Manjunath', 'B tech', 2, 8143679675, 0),
-(851415, '123654', 'Sailesh Satpathy', 'B.Tech', 2, 8374649414, 0),
-(951425, 'priyam', 'priyam khandelwal', 'B.Tech', 2, 9024538969, 0),
-(951438, '12345', 'Sushrut Kasture', 'B.Tech', 2, 9403039900, 0);
 
 -- --------------------------------------------------------
 
@@ -157,16 +129,24 @@ CREATE TABLE `users` (
   `last_ip` varchar(40) COLLATE utf8_bin NOT NULL,
   `last_login` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `name` varchar(50) COLLATE utf8_bin NOT NULL,
+  `contact` varchar(15) COLLATE utf8_bin NOT NULL,
+  `user_group_id` int(5) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `email`, `activated`, `banned`, `ban_reason`, `new_password_key`, `new_password_requested`, `new_email`, `new_email_key`, `last_ip`, `last_login`, `created`, `modified`) VALUES
-(5, 'architkansal', '$P$BoeZeGt5i6ri/heFUfnq9cmPg5PpMt.', 'karchit@student.nitw.ac.in', 1, 0, NULL, NULL, NULL, NULL, 'ad116a1859d1bdac8db34b44bd030f5e', '127.0.0.1', '2016-01-23 21:00:24', '2016-01-22 16:02:32', '2016-01-23 20:00:24'),
-(10, 'prasad', '$P$BEnlRzZyrUNZATwNcT01/oeroq1jaf.', 'patilprasad263@gmail.com', 1, 0, NULL, NULL, NULL, NULL, '9e173f4aed7b6557c18e1641ff828cd3', '::1', '2016-01-22 18:26:07', '2016-01-22 16:32:46', '2016-01-22 17:26:07');
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `activated`, `banned`, `ban_reason`, `new_password_key`, `new_password_requested`, `new_email`, `new_email_key`, `last_ip`, `last_login`, `created`, `modified`, `name`, `contact`, `user_group_id`) VALUES
+(5, 'architkansal', '$P$BoeZeGt5i6ri/heFUfnq9cmPg5PpMt.', 'karchit@student.nitw.ac.in', 1, 0, NULL, NULL, NULL, NULL, 'ad116a1859d1bdac8db34b44bd030f5e', '127.0.0.1', '2016-01-26 10:58:35', '2016-01-22 16:02:32', '2016-01-26 09:58:35', '', '0', 1),
+(10, 'prasad', '$P$BEnlRzZyrUNZATwNcT01/oeroq1jaf.', 'patilprasad263@gmail.com', 1, 0, NULL, NULL, NULL, NULL, '9e173f4aed7b6557c18e1641ff828cd3', '::1', '2016-01-22 18:26:07', '2016-01-22 16:32:46', '2016-01-22 17:26:07', '', '0', 0),
+(11, 'manju', '$P$B/PuvsfQ7gWZPO7pqHwPd2hvTM1vIa1', 'smanjunathg@gmail.com', 1, 0, NULL, NULL, NULL, NULL, NULL, '127.0.0.1', '0000-00-00 00:00:00', '2016-01-24 10:32:20', '2016-01-24 09:32:20', '', '0', 0),
+(22, '8142344', '$P$BnP77Wt8ik882b4hVo6j1nQ/rFXnnu/', 'arch@gamil.com', 1, 0, NULL, NULL, NULL, NULL, NULL, '127.0.0.1', '0000-00-00 00:00:00', '2016-01-24 15:05:08', '2016-01-24 14:05:08', 'patil dsgn', '', 0),
+(23, '984521', '$P$BZ3ASMFBCxMRPBOm8f8/Zx8/vBEmhO0', 'karchyit@student.nitw.ac.in', 1, 0, NULL, NULL, NULL, NULL, NULL, '127.0.0.1', '0000-00-00 00:00:00', '2016-01-24 17:33:29', '2016-01-24 16:33:29', 'test', '5454544555', 0),
+(24, '851401', '$P$BURpaLI.M4YnyQqoT3oke54voaTZ8K.', 'sanshraydewangan1@gmail.com', 1, 0, NULL, NULL, NULL, NULL, NULL, '127.0.0.1', '2016-01-24 18:46:12', '2016-01-24 18:43:27', '2016-01-24 17:46:12', 'Sanshray Dewangan', '8143684606', 0),
+(25, '811437', '$P$BBbeP.TFGID8JPRj8G91l/365BXsAL0', 'akashcoolahirwar@gmail.com', 1, 0, NULL, NULL, NULL, NULL, NULL, '127.0.0.1', '2016-01-24 18:51:01', '2016-01-24 18:49:31', '2016-01-24 17:51:01', 'akash', '9866015990', 0);
 
 -- --------------------------------------------------------
 
@@ -215,6 +195,27 @@ CREATE TABLE `user_profiles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
+-- Dumping data for table `user_profiles`
+--
+
+INSERT INTO `user_profiles` (`id`, `user_id`, `country`, `website`) VALUES
+(1, 11, NULL, NULL),
+(2, 12, NULL, NULL),
+(3, 13, NULL, NULL),
+(4, 14, NULL, NULL),
+(5, 15, NULL, NULL),
+(6, 16, NULL, NULL),
+(7, 17, NULL, NULL),
+(8, 18, NULL, NULL),
+(9, 19, NULL, NULL),
+(10, 20, NULL, NULL),
+(11, 21, NULL, NULL),
+(12, 22, NULL, NULL),
+(13, 23, NULL, NULL),
+(14, 24, NULL, NULL),
+(15, 25, NULL, NULL);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -229,13 +230,15 @@ ALTER TABLE `ci_sessions`
 --
 ALTER TABLE `complaint`
   ADD PRIMARY KEY (`cid`),
-  ADD KEY `userid` (`userid`);
+  ADD KEY `cid` (`cid`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `hdepartment`
 --
 ALTER TABLE `hdepartment`
-  ADD PRIMARY KEY (`hcdid`);
+  ADD PRIMARY KEY (`hcdid`),
+  ADD KEY `id` (`id`);
 
 --
 -- Indexes for table `login_attempts`
@@ -244,16 +247,13 @@ ALTER TABLE `login_attempts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`userid`);
-
---
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `id` (`id`),
+  ADD KEY `user_group_id` (`user_group_id`);
 
 --
 -- Indexes for table `user_autologin`
@@ -265,7 +265,9 @@ ALTER TABLE `user_autologin`
 -- Indexes for table `user_group`
 --
 ALTER TABLE `user_group`
-  ADD PRIMARY KEY (`user_group_id`);
+  ADD PRIMARY KEY (`user_group_id`),
+  ADD KEY `user_group_id` (`user_group_id`),
+  ADD KEY `user_group_id_2` (`user_group_id`);
 
 --
 -- Indexes for table `user_profiles`
@@ -281,7 +283,7 @@ ALTER TABLE `user_profiles`
 -- AUTO_INCREMENT for table `complaint`
 --
 ALTER TABLE `complaint`
-  MODIFY `cid` bigint(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `cid` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `login_attempts`
 --
@@ -291,22 +293,12 @@ ALTER TABLE `login_attempts`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `user_profiles`
 --
 ALTER TABLE `user_profiles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `complaint`
---
-ALTER TABLE `complaint`
-  ADD CONSTRAINT `complaint_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `user` (`userid`) ON UPDATE CASCADE;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
