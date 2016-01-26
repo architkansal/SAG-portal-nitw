@@ -13,6 +13,7 @@ class user_controller extends CI_Controller
 	function index()
 	{
 		$this->load->view('rahul/login.html');
+
 	}
 
 	function electrician()
@@ -49,6 +50,7 @@ class user_controller extends CI_Controller
 	{
 		$this->load->model('user_model');
 		$this->user_model->reg_complaint();
+		
 	}
 
 }
