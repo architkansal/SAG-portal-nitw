@@ -43,7 +43,7 @@ $captcha = array(
   <!-- <link rel="stylesheet" type="text/css" href="custom.css">   CodeIgniter-3.0.4/application/views/pages/bootstrap-3.3.6-dist\css-->
 </head>
 
-<body style="background-color:#000066">
+<body>
 
         <nav class="navbar navbar-inverse">
     <div class="container-fluid">

@@ -6,12 +6,13 @@ class user_controller extends CI_Controller
 	{
 		parent::__construct();
 
-		// $this->load->helper('url');
-		// $this->load->library('tank_auth');
+		$this->load->helper('url');
+		$this->load->library('tank_auth');
 	}
 
 	function index()
 	{
+		// $data['user_id'] = $this->tank_auth->get_user_id();
 		$this->load->view('rahul/login.html');
 
 	}
