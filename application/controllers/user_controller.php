@@ -71,4 +71,25 @@ class user_controller extends CI_Controller
 		$this->load->view('rahul/message.html');
 	}
 
+
+	function show_details()
+  {
+  	$q=$_GET['page'];
+  	if($q==1)
+    $this->load->view('rahul/elec-admin.html');
+	else if($q==2)
+	$this->load->view('rahul/carpenter_admin.html');
+	else if($q==3)
+	$this->load->view('rahul/plumber_admin.html');
+	else if($q==4)
+	$this->load->view('rahul/lan_admin.html');
+	else if($q==5)
+	$this->load->view('rahul/hostelg_admin.html');
+	else if($q==6)
+	$this->load->view('rahul/messg_admin.html');
+ 
+  }
+
+
+
 }
