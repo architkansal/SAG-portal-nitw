@@ -63,7 +63,12 @@ class user_controller extends CI_Controller
 	{
 		$this->load->model('user_model');
 		$this->user_model->reg_complaint();
-		
+		$this->complaint_reg_success();
+	}
+
+	function complaint_reg_success()
+	{
+		$this->load->view('rahul/message.html');
 	}
 
 }
