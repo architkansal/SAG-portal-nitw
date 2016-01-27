@@ -34,4 +34,19 @@ class user_model extends CI_Controller
 
   }
 
+  function group_id()
+  {
+    $id = $this->tank_auth->get_user_id();
+    // print_r($id);
+    // echo "hello";
+    $this ->db-> select('user_group_id')-> where('id', $id)-> Limit(1)-> from('users');
+    $grp=$this->db->get();
+    $res=$grp->result_array();
+    $grp1=$res[0]['user_group_id'];
+    // print_r($grp1);
+      /*print_r($q->result());*/
+      // echo "ID is" . $id;
+      return $grp1;
+  }
+
 }
