@@ -12,9 +12,21 @@ class user_controller extends CI_Controller
 
 	function index()
 	{
-		// $data['user_id'] = $this->tank_auth->get_user_id();
-		$this->load->view('rahul/login.html');
-
+		if($this->tank_auth->is_logged_in())
+		{
+			$this->load->model('user_model');
+			$group_id=$this->user_model->group_id();
+			// echo $group_id;
+			if($group_id==0)
+				$this->load->view('rahul/login.html');
+			else if($group_id==1)
+				$this->load->view('rahul/admin.html');
+		}
+		else
+	 	{
+			redirect('/auth/login/');
+		}
+	
 	}
 
 	function electrician()
@@ -51,7 +63,33 @@ class user_controller extends CI_Controller
 	{
 		$this->load->model('user_model');
 		$this->user_model->reg_complaint();
-		
+		$this->complaint_reg_success();
 	}
+
+	function complaint_reg_success()
+	{
+		$this->load->view('rahul/message.html');
+	}
+
+
+	function show_details()
+  {
+  	$q=$_GET['page'];
+  	if($q==1)
+    $this->load->view('rahul/elec-admin.html');
+	else if($q==2)
+	$this->load->view('rahul/carpenter_admin.html');
+	else if($q==3)
+	$this->load->view('rahul/plumber_admin.html');
+	else if($q==4)
+	$this->load->view('rahul/lan_admin.html');
+	else if($q==5)
+	$this->load->view('rahul/hostelg_admin.html');
+	else if($q==6)
+	$this->load->view('rahul/messg_admin.html');
+ 
+  }
+
+
 
 }

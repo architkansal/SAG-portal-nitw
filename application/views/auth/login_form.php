@@ -83,7 +83,7 @@ $captcha = array(
           <li><a href="#">Contact us</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="http://localhost:8088/service/index.php/user_controller/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a href="../auth/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
           <!-- <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
         </ul>
       </div>
