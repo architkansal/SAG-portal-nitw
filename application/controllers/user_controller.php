@@ -20,7 +20,8 @@ class user_controller extends CI_Controller
 			if($group_id==0)
 				$this->load->view('rahul/login.html');
 			else if($group_id==1)
-				$this->load->view('rahul/admin.html');
+				$this->load->view('slidemenu.html');
+				// $this->load->view('rahul/admin.html');
 		}
 		else
 	 	{
