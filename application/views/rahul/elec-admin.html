@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css" >
 <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
 <style>
 #customers {
@@ -86,15 +87,19 @@
     <th>S.No</th>
     <th>User name</th>
     <th>Complaint id</th>
+    <th>reg id</th>
     <th>Status</th>
+
   </tr>
   <tr>
     <td></td>
     <td></td>
     <td></td>
     <td></td>
+    <td></td>
   </tr>
   <tr>
+    <td></td>
     <td></td>
     <td></td>
     <td></td>
@@ -104,25 +109,27 @@
     <td>aaa</td>
     <td>bbb</td>
     <td>ccc</td>
+    <td>rrr</td>
     <td>
-      <div class="dropdown">
-      <h3 id="demo">Pending</h3>
-      <div class="dropdown-content">
-      <h4 onclick="myFunction()">Change status</h4>
-      <script>
-     function myFunction() {
-      if( document.getElementById("demo").innerHTML==="Pending")
-     document.getElementById("demo").innerHTML = "Resolved";
-   else
-      document.getElementById("demo").innerHTML="Pending";
-     }
-     </script>
-      </div>
-      </div>
+      <p id="h" onclick="resolved(this)">hkjshvkjhsjh</p>
+      <!-- <input type="submit" class="btn btn-danger" id="1" onclick="resolved(this)" value="Resolved">  -->
     </td>
   </tr>
   
 </table>
+<script>
+function resolved(x)
+{
+  var y=x.id;
+  alert(y);
+  alert($("#y").text());
+
+   
+   
+
+};
+</script>
+ 
   <div class="row">
     <br/>
     <br/>
@@ -148,5 +155,47 @@
   <p class="mid1">Address: #H.No.39/17,HUDA<br>Haryana</p>
   </div>
   </div>
+  <script>
+$(document).ready(function(){
+    $("#btn1").click(function(){
+        alert("Text: " + $("#test").text());
+    });
+    $("#btn2").click(function(){
+        alert("HTML: " + $("#test").html());
+    });
+});
+</script>
+</head>
+<body>
+
+<p id="test">This is some <b>bold</b> text in a paragraph.</p>
+
+<button id="btn1">Show Text</button>
+<button id="btn2">Show HTML</button>
+
   </body>
 </html>
+
+
+
+
+
+
+
+
+<!--
+<div class="dropdown">
+      <h3 id="demo">Pending</h3>
+      <div class="dropdown-content">
+      <h4 onclick="myFunction()">Change status</h4>
+      <script>
+     function myFunction() {
+      if( document.getElementById("demo").innerHTML==="Pending")
+     document.getElementById("demo").innerHTML = "Resolved";
+   else
+      document.getElementById("demo").innerHTML="Pending";
+     }
+     </script>
+      </div>
+      </div>
+-->
