@@ -82,29 +82,33 @@
     </div>
   </nav>
   <table id="customers">
-  <tr>
+   <tr>
     <th>S.No</th>
-    <th>User_id</th>
-    <th>User name</th>
     <th>Complaint id</th>
+    <th>User_id</th>
+    <th>name</th>
     
-    <th>Status</th>
-
+    
+    <th>Status</th>  
   </tr>
   <?php $x=1;?>
    <?php foreach($det as $pro) :?>
-   <tr>
-   
   
-    <td><?php echo $x++;?></td>
+   
+   <tr>
+      
+     <td ><?php echo $x++;?></td>
+
+    <td><a href="#"><?php echo $pro['cid'];?></a></td>
     <td><?php echo $pro['user_id']; ?></td>
     <td><?php echo $pro['name']; ?></td>
-    <td><?php echo $pro['cid'];?></td>
-    
-    <td><?php echo $pro['status'];?></td>
- </tr>
+     <td><?php echo $pro['status'];?></td>
+
+   </tr>
+ 
     <?php endforeach; ?>
 
+   
   <tr>
     <td></td>
     <td></td>

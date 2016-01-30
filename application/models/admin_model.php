@@ -47,9 +47,20 @@ class Admin_model extends CI_Controller
     //$this->db->where('complaint.user_id'='users.id');
     $grp=$this->db->get();
     $res=$grp->result_array();
-    print_r($res);
+    //print_r($res);
      return $res;
 
+  }
+
+  function get_c_details($cid)
+  {
+    echo $cid;
+    $this->db->select('cid,user_id,date,hcdid,preftime,room,hostel,mobile,details')
+             ->from('complaint')
+             ->where('cid',$cid);
+    $query=$this->db->get();
+    print_r($query->result_array());
+    return($query->result_array());
   }
 
 

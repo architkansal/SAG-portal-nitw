@@ -141,5 +141,15 @@ class user_controller extends CI_Controller
     return $res;
   }
 
+  function show_c_details()
+  {
+  	$cid=$_GET['cid'];
+  	echo $cid;
+  	$this->load->model('admin_model');
+  	 $data['inf']=$this->admin_model->get_c_details($cid);
+     $this->load->view('rahul/complaint_discription.html',$data);
+  }
+
+
 
 }
