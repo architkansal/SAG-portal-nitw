@@ -1,0 +1,140 @@
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+<script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+  <style>
+  body {
+    background: url(file:///home/rahul/Documents/111.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    }
+    #image
+    {
+    padding-top: 0px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+
+    }
+    map.h1 {
+    color: black;
+    text-decoration: underline;
+    font-family:Courier;
+}
+h3{
+	font-style: oblique;
+}
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    padding: 8px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+}
+
+  </style>
+</head>
+<body>
+<h1>
+	<img id="image" src="http://localhost/SAG-portal-nitw/download.jpg" style="float:left;width:65px;height:65px;">
+    National Institute Of Technology, Warangal
+</h1>
+</br>
+<!-- <h1 style="color:#737373;">Welcome to  <?php //echo $user_id ?>....</h1> -->
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li style="font-size:25px"><a href="#">SAG Portal</a></li> 
+          <li class="active"><a href="#">Home</a></li>
+          <!--<li><a href="#">Contact us</a></li>-->
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="auth/logout"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+          <!-- <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+	<div class="row">
+		<div class="col-md-8">
+			
+			<h1 class="map">About Complaint</h1>
+		    </br>
+		    <p>
+		    <h3>CID:</h3><h5></h5>
+		    </p>
+		    <p>
+		    <h3>Username:</h3><h5></h5>
+		</p>
+		<p>
+		    <h3>Complaint Tag:</h3><h5></h5>
+		</p>
+		<p>
+		    <h3>Complaint Descripton:</h3><h5></h5>
+		    <p>
+		    	<p>
+		    <h3>Date of Complaint:</h3><h5></h5>
+		</p>
+		<p>
+		    <h3>Hostel Name:</h3><h5></h5>
+		</p>
+		<p>
+		    <h3>Room Number:</h3><h5></h5>
+		</p>
+		<p>
+		    <h3>Preferred Time:</h3><h5></h5>
+		</p>
+		    <hr>
+		    <h2>Report:</h2>
+		    <h5></h5>
+
+	
+		</div>
+		<div class="col-md-4">
+		</br>
+	    </br>
+        </br>
+        <a href="user_controller/hostelg">
+    <button class="button">Resolved</button>
+  </a>
+  <br>
+</br>
+</br>
+  <a href="user_controller/hostelg">
+    <button class="button">Postpone</button>
+  </a>
+  <br>
+</br>
+</br>
+  <a href="user_controller/hostelg">
+    <button class="button">Delete/False</button>
+  </a>
+</br>
+         
+</div>
+
+            </div>  
+		</div>
+	</div>
+</div>
+  
+</div>
+</body>
+</html>
