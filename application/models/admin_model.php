@@ -96,4 +96,30 @@ class Admin_model extends CI_Controller
     $query=$this->db->get();
     return($query->result_array());
    }
+
+ function get_user_grp($id)
+   {
+    $this->db->select('user_group_id')
+             ->from('users')
+             ->where('id',$id);
+             
+    $query=$this->db->get();
+    return($query->result_array());
+   }
+
+   function show_my_complaints($id)
+   {
+    $this->db->select('cid,date,hcdid,preftime,details,status')
+             ->from('complaint')
+             ->where('user_id',$id);
+    $query=$this->db->get();
+    $query1=$query->result_array();
+  //   if(empty($query->result()))
+  //   $query1['no_of_c']=0;
+  // else
+  //   $query1['no_of_c']=1;
+    //print_r($query->result_array());
+    return($query1);
+   }
+
 }

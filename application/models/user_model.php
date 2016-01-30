@@ -13,11 +13,9 @@ class user_model extends CI_Controller
 
   function reg_complaint()
   {
-    //$data['sname'] =$this->input->post('sname');
+    
     $data['user_id'] = $this->tank_auth->get_user_id();
-    // $data['userid']='811443';
-    // $data['name'] =$this->input->post('sname');
-    // echo $_POST['website_string'];
+    
     $data['hostel'] =$this->input->post('hostel');
     $data['room'] =$this->input->post('room_no');
     $data['mobile'] =$this->input->post('contact');

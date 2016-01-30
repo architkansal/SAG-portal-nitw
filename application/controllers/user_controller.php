@@ -17,7 +17,6 @@ class user_controller extends CI_Controller
 		{
 			$this->load->model('user_model');
 			$group_id=$this->user_model->group_id();
-			// echo $group_id;
 			if($group_id==0)
 				$this->load->view('rahul/login.html');
 			else if($group_id==1)
@@ -198,11 +197,14 @@ class user_controller extends CI_Controller
   {
   	$cid=$_GET['cid'];
   	//echo $cid;
+  	$id=$this->tank_auth->get_user_id();
   	$this->load->model('admin_model');
   	 $data['inf']=$this->admin_model->get_c_details($cid);
+  	 $data['user_grp']=$this->admin_model->get_user_grp($id);
      $this->load->view('rahul/complaint_discription.html',$data);
      $data['query']=$this->admin_model->get_report($cid);
      $this->load->view('rahul/complaint_report.html',$data);
+
      
   }
 
@@ -235,8 +237,17 @@ function deleted()
     $this->admin_model->status_change($cid,'-1');
     //$this->load->view('rahul/message.html'); ///temperory
    // $this->load->view('rahul/complaint_discription.html',$data);
-}
+  }
 
+
+function show_my_complaints()
+{
+  $id=$this->tank_auth->get_user_id();
+  $this->load->model('admin_model');
+  $data['det']=$this->admin_model->show_my_complaints($id);
+  //echo $data['no_of_c'];
+  $this->load->view('rahul/my_complaints.html',$data);//temperory..... new view required here...done (Y) :)
+}
 
 
 
