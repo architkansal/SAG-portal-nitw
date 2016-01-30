@@ -85,15 +85,42 @@ class user_controller extends CI_Controller
   	}
     
 	else if($q==2)
-	$this->load->view('rahul/carpenter_admin.html');
+	{
+		$hcdid='22';
+		$arr['det']= $this->fetch_complaints($hcdid);
+		$this->load->view('rahul/carpenter_admin.html',$arr);
+	}
+	
 	else if($q==3)
-	$this->load->view('rahul/plumber_admin.html');
+	{
+		$hcdid='33';
+		$arr['det']= $this->fetch_complaints($hcdid);
+
+		$this->load->view('rahul/plumber_admin.html',$arr);
+	}
+
+	
 	else if($q==4)
-	$this->load->view('rahul/lan_admin.html');
+	{
+		$hcdid='44';
+		$arr['det']= $this->fetch_complaints($hcdid);
+		$this->load->view('rahul/lan_admin.html',$arr);
+	}
+	
 	else if($q==5)
-	$this->load->view('rahul/hostelg_admin.html');
+	{
+		$hcdid='55';
+		$arr['det']= $this->fetch_complaints($hcdid);
+		$this->load->view('rahul/hostelg_admin.html',$arr);
+	}
+	
 	else if($q==6)
-	$this->load->view('rahul/messg_admin.html');
+	{
+		$hcdid='66';
+		$arr['det']= $this->fetch_complaints($hcdid);
+		$this->load->view('rahul/messg_admin.html',$arr);
+	}
+	
  
   }
 

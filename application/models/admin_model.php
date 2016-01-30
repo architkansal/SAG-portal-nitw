@@ -34,12 +34,18 @@ class Admin_model extends CI_Controller
   
   function get_complaints($hcdid)
   {
-    $q=0;
-    $wh="'complaint.hcdid'=$hcdid AND'complaint.status'=$q,  AND 'complaint.user_id'='users.id'";
-    $this->db->select('user_id','cid','username','name')
-    ->from('complaint','users')
-    ->where( $wh );
-    $grp=$this->db->get_where();
+    $q=3;
+    // $this->db->select('username');
+    // $this->db->from('users');
+    // $this->db->where('id IN ');
+
+    $this->db->select('complaint.user_id,complaint.cid,complaint.status,users.name');
+    $this->db->from('complaint,users');
+    $this->db->where('complaint.hcdid',$hcdid);
+    $this->db->where('complaint.status',!$q);
+    //$this->db->where('complaint.user_id','users.id');
+    //$this->db->where('complaint.user_id'='users.id');
+    $grp=$this->db->get();
     $res=$grp->result_array();
     print_r($res);
      return $res;
