@@ -6,8 +6,10 @@ class user_controller extends CI_Controller
 	{
 		parent::__construct();
 
-		$this->load->helper('url');
+		// $this->load->helper('url');
+		$this->load->helper(array('form', 'url'));
 		$this->load->library('tank_auth');
+		$this->load->dbutil();
 	}
 
 	function index()
@@ -16,7 +18,6 @@ class user_controller extends CI_Controller
 		{
 			$this->load->model('user_model');
 			$group_id=$this->user_model->group_id();
-			// echo $group_id;
 			if($group_id==0)
 				$this->load->view('rahul/login.html');
 			else if($group_id==1)
@@ -25,11 +26,11 @@ class user_controller extends CI_Controller
 				$this->load->view('slidemenu.html');
 			else if($group_id==11)
 				$this->load->view('rahul/elec-admin.html');
-			else if($group_id==22)
+			else if($group_id==44)
 				$this->load->view('rahul/carpenter_admin.html');
 			else if($group_id==33)
 				$this->load->view('rahul/lan_admin');
-			else if($group_id==44)
+			else if($group_id==22)
 				$this->load->view('rahul/plumber_admin.html');
 		}
 		else
@@ -78,7 +79,7 @@ class user_controller extends CI_Controller
 
 	function complaint_reg_success()
 	{
-		$this->load->view('rahul/message.html');
+		$this->load->view('rahul/success.html');
 	}
 
 
@@ -94,15 +95,42 @@ class user_controller extends CI_Controller
   	}
     
 	else if($q==2)
-	$this->load->view('rahul/carpenter_admin.html');
+	{
+		$hcdid='22';
+		$arr['det']= $this->fetch_complaints($hcdid);
+		$this->load->view('rahul/plumber_admin.html',$arr);
+	}
+	
 	else if($q==3)
-	$this->load->view('rahul/plumber_admin.html');
+	{
+		$hcdid='33';
+		$arr['det']= $this->fetch_complaints($hcdid);
+
+		$this->load->view('rahul/lan_admin.html',$arr);
+	}
+
+	
 	else if($q==4)
-	$this->load->view('rahul/lan_admin.html');
+	{
+		$hcdid='44';
+		$arr['det']= $this->fetch_complaints($hcdid);
+		$this->load->view('rahul/carpenter_admin.html',$arr);
+	}
+	
 	else if($q==5)
-	$this->load->view('rahul/hostelg_admin.html');
+	{
+		$hcdid='55';
+		$arr['det']= $this->fetch_complaints($hcdid);
+		$this->load->view('rahul/hostelg_admin.html',$arr);
+	}
+	
 	else if($q==6)
-	$this->load->view('rahul/messg_admin.html');
+	{
+		$hcdid='66';
+		$arr['det']= $this->fetch_complaints($hcdid);
+		$this->load->view('rahul/messg_admin.html',$arr);
+	}
+	
  
   }
 
@@ -114,5 +142,136 @@ class user_controller extends CI_Controller
     return $res;
   }
 
+
+/*  function submit_grievance()   ///complaint form submit
+	{
+		$this->load->model('user_model');
+		$gid = $this->user_model->reg_grievance();
+
+		$this->complaint_reg_success();
+	}
+*/
+	function do_upload()
+	{
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '100';
+		$config['max_width']  = '1024';
+		$config['max_height']  = '768';
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload())
+		{
+			// $error = array('error' => $this->upload->display_errors());
+
+			// $this->load->view('upload_form', $error);
+
+			$this->load->model('user_model');
+			$this->user_model->reg_grievance();
+		}
+		else
+		{
+			$data = array('upload_data' => $this->upload->data());
+
+			
+			// print($data['upload_data']['file_name']);
+			echo('<h1>done!!</h1>');
+						$insert_data = array(
+                    'name' => $data['upload_data']['file_name'],
+                    'path' => $data['upload_data']['full_path'],
+                    // 'thumb_path'=> $data['upload_data']['file_path'] . 'thumbs/'. $data['upload_data']['file_name'],
+                     );
+			$this->load->model('user_model');
+			$this->user_model->reg_grievance($insert_data);
+			// $this->load->view('upload_success', $data);
+			// $this->complaint_reg_success();
+		}
+
+	}
+
+
+  function show_c_details()
+  {
+  	$cid=$_GET['cid'];
+  	//echo $cid;
+  	$id=$this->tank_auth->get_user_id();
+  	$this->load->model('admin_model');
+  	 $data['inf']=$this->admin_model->get_c_details($cid);
+  	 $data['user_grp']=$this->admin_model->get_user_grp($id);
+     $this->load->view('rahul/complaint_discription.html',$data);
+     $data['query']=$this->admin_model->get_report($cid);
+     $this->load->view('rahul/complaint_report.html',$data);
+
+     
+  }
+
+
+  function resolved()
+  {
+   $cid=$_GET['cid'];
+   //echo $cid;
+    $this->load->model('admin_model');
+    $this->admin_model->status_change($cid,'1');
+    //$this->load->view('rahul/message.html'); ///temperory
+   // $this->load->view('rahul/complaint_discription.html',$data);
+
+  }
+  function postpone()
+  {
+   $cid=$_GET['cid'];
+   //echo $cid;
+    $this->load->model('admin_model');
+    $this->admin_model->status_change($cid,'2');
+    //$this->load->view('rahul/message.html'); ///temperory
+   // $this->load->view('rahul/complaint_discription.html',$data);
+}
+
+function deleted()
+  {
+   $cid=$_GET['cid'];
+   //echo $cid;
+    $this->load->model('admin_model');
+    $this->admin_model->status_change($cid,'-1');
+    //$this->load->view('rahul/message.html'); ///temperory
+   // $this->load->view('rahul/complaint_discription.html',$data);
+  }
+
+
+	
+	function show_grievances()
+	{
+		// $this->load->view('upvote.html');
+		if(!$this->tank_auth->is_logged_in())
+			redirect('auth/login');
+		$this->load->model('user_model');
+		$res['index'] = $this->user_model->get_grievances();
+		$this->load->view('upvote.html',$res);
+	
+	}
+
+
+	function inc_upvotes()
+	{
+		if(!$this->tank_auth->is_logged_in())
+			redirect('auth/login');
+		$gid = $_GET["gid"];
+		$this->load->model('user_model');
+		$this->user_model->inc_upvotes($gid);
+		$this->load->model('user_model');
+		$res['index'] = $this->user_model->get_grievances();
+		$this->load->view('upvote.html',$res);
+
+function show_my_complaints()
+{
+  $id=$this->tank_auth->get_user_id();
+  $this->load->model('admin_model');
+  $data['det']=$this->admin_model->show_my_complaints($id);
+  //echo $data['no_of_c'];
+  $this->load->view('rahul/my_complaints.html',$data);//temperory..... new view required here...done (Y) :)
+}
+
+
+	}
 
 }

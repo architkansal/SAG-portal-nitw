@@ -73,7 +73,7 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
           <li style="font-size:25px"><a href="#">SAG Portal</a></li> 
-          <li class="active"><a href="index.php">Home</a></li>
+          <li class="active"><a href="http://localhost/SAG-portal-nitw/index.php/user_controller">Home</a></li>
           <!--<li><a href="#">Contact us</a></li>-->
         </ul>
         <ul class="nav navbar-nav navbar-right">
@@ -83,39 +83,52 @@
     </div>
   </nav>
   <table id="customers">
-  <tr>
+   <tr>
     <th>S.No</th>
-    <th>User name</th>
     <th>Complaint id</th>
-    <th>reg id</th>
-    <th>Status</th>
+    <th>User_id</th>
+    <th>name</th>
+    
+    
+    <th>Status</th>  
+  </tr>
+  <?php $x=1;?>
+   <?php foreach($det as $pro) :?>
+  
+   
+   <tr>
+      
+     <td ><?php echo $x++;?></td>
 
-  </tr>
+    <td><a href="../user_controller/show_c_details?cid=<?php echo $pro['cid'];?>"><?php echo $pro['cid'];?></a></td>
+    <td><?php echo $pro['user_id']; ?></td>
+    <td><?php echo $pro['name']; ?></td>
+     <td><?php echo $pro['status'];?></td>
+
+   </tr>
+ 
+    <?php endforeach; ?>
+
+   
   <tr>
     <td></td>
     <td></td>
     <td></td>
     <td></td>
+ 
     <td></td>
   </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
+  <!-- <tr>
     <td>aaa</td>
     <td>bbb</td>
     <td>ccc</td>
     <td>rrr</td>
     <td>
       <p id="h" onclick="resolved(this)">hkjshvkjhsjh</p>
-      <!-- <input type="submit" class="btn btn-danger" id="1" onclick="resolved(this)" value="Resolved">  -->
+      <input type="submit" class="btn btn-danger" id="1" onclick="resolved(this)" value="Resolved"> 
     </td>
   </tr>
-  
+   -->
 </table>
 <script>
 function resolved(x)
@@ -166,14 +179,14 @@ $(document).ready(function(){
 });
 </script>
 </head>
-<body>
+<!-- <body>
 
 <p id="test">This is some <b>bold</b> text in a paragraph.</p>
 
 <button id="btn1">Show Text</button>
 <button id="btn2">Show HTML</button>
 
-  </body>
+  </body> -->
 </html>
 
 

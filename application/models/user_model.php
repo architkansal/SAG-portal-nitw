@@ -8,16 +8,15 @@ class user_model extends CI_Controller
   	parent::__construct();
     $this->load->helper('url');
     $this->load->library('tank_auth');
+    $this->load->dbutil();
   }
 
 
   function reg_complaint()
   {
-    //$data['sname'] =$this->input->post('sname');
+    
     $data['user_id'] = $this->tank_auth->get_user_id();
-    // $data['userid']='811443';
-    // $data['name'] =$this->input->post('sname');
-    // echo $_POST['website_string'];
+    
     $data['hostel'] =$this->input->post('hostel');
     $data['room'] =$this->input->post('room_no');
     $data['mobile'] =$this->input->post('contact');
@@ -49,5 +48,142 @@ class user_model extends CI_Controller
       return $grp1;
   }
 
+    
+
+  function reg_grievance($insert_data=NULL)
+  {
+    
+    $data['user_id'] = $this->tank_auth->get_user_id();
+    $data['hostel'] =$this->input->post('dropdown1');
+    $data['floor'] =$this->input->post('dropdown2');
+    $data['tag'] =$this->input->post('dropdown3');
+    $data['details']=$this->input->post('description');
+    $this->db->insert('grievances',$data);
+    if($insert_data!=NULL)
+    {
+
+      $gid=$this->db->insert_id();
+      // $data1['hcdid']=$_GET['hcdid'];
+      // $data1['details']=$this->input->post('description');
+      // 'name' => $image_data['file_name'],
+      $insert_data['gid']= $gid;
+      $this->db->insert('imgtable', $insert_data);
+    }
+    
+  }
+  
+  function get_grievances()
+  {
+
+      $this ->db-> select('*')->from('grievances')->join('imgtable' , 'grievances.gid=imgtable.gid')
+      ->where('status' , '0');
+      $grp=$this->db->get();
+      $res=$grp->result_array();
+      $res2=$grp->result();
+
+      // print_r($res);
+      $delimiter=",";
+      $newline="\r\n";
+      // echo $this->dbutil->csv_from_result($grp,$delimiter,$newline);
+
+      return $res;
+  }
+
+  function inc_upvotes($gid)
+  {
+    // $id = $this->tank_auth->get_user_id();
+   /* echo($id);
+    $this->db->select('grev_votes')
+        ->from('users')
+        ->where('id' , $id);
+    $grp = $this->db->get();
+    $delimiter=",";
+      $newline="\r\n";
+    $res =  $this->dbutil->csv_from_result($grp,$delimiter,$newline);
+    $complaintArray = explode(',',$res);
+    print_r($res);
+     print_r($complaintArray);
+    $i=0;
+    foreach ( $complaintArray as $k ) 
+    {
+      if($k[$i++]==$gid)return;
+
+    }
+     
+    if($grp->num_rows()==0)
+    {
+      $res=$gid;
+    }
+    else
+    {
+      $res = $res.",".$gid;
+    }
+
+
+
+    // array_push($complaintArray,$gid);
+    // print_r($complaintArray);
+    // array_filter($complaintArray);
+    
+    // foreach($complaintArray as $link)
+    // {
+    //     if($link == '')
+    //     {
+    //         unset($link);
+    //     }
+    // }
+    ///echo ($id);
+
+   //// print_r($res);
+    $data['grev_votes']=$res;
+    //print_r($data);
+     $this->db->where('id',$id)
+              ->update('users',$data);
+
+      $this->db->select('upvotes')
+              ->from('grievances')
+              ->where('gid',$gid);
+
+        $count2 =  ($this->db->get());
+        $count= $count2->result_array();
+        $cnt = $count[0]['upvotes'];
+        $cnt+=1;
+        $dat['upvotes'] = $cnt;
+
+        $this->db->where('gid' , $gid)
+                  ->update('grievances' , $dat );
+
+
+*/
+
+
+
+        $id = $this->tank_auth->get_user_id();
+        $this->db->select('*')->from('upvote')
+                ->where('gid',$gid)
+                ->where('user_id' , $id);
+          $res = $this->db->get();
+          if($res->num_rows()==0)
+          {
+            $data2['gid'] = $gid;
+            $data2['user_id']= $id;
+            $this->db->insert('upvote' , $data2);
+             $this->db->select('upvotes')
+              ->from('grievances')
+              ->where('gid',$gid);
+
+        $count2 =  ($this->db->get());
+        $count= $count2->result_array();
+        $cnt = $count[0]['upvotes'];
+        $cnt+=1;
+        $dat['upvotes'] = $cnt;
+
+        $this->db->where('gid' , $gid)
+                  ->update('grievances' , $dat );
+
+          }
+
+
+  }
 
 }

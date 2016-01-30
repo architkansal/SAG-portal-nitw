@@ -72,7 +72,7 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
           <li style="font-size:25px"><a href="#">SAG Portal</a></li> 
-          <li class="active"><a href="index.php">Home</a></li>
+          <li class="active"><a href="http://localhost/SAG-portal-nitw/index.php/user_controller">Home</a></li>
           <!--<li><a href="#">Contact us</a></li>-->
         </ul>
         <ul class="nav navbar-nav navbar-right">
@@ -82,25 +82,42 @@
     </div>
   </nav>
   <table id="customers">
-  <tr>
+   <tr>
     <th>S.No</th>
-    <th>User name</th>
     <th>Complaint id</th>
-    <th>Status</th>
+    <th>User_id</th>
+    <th>name</th>
+    
+    
+    <th>Status</th>  
   </tr>
+  <?php $x=1;?>
+   <?php foreach($det as $pro) :?>
+  
+   
+   <tr>
+      
+     <td ><?php echo $x++;?></td>
+
+    <td><a href="../user_controller/show_c_details?cid=<?php echo $pro['cid'];?>"><?php echo $pro['cid'];?></a></td>
+    <td><?php echo $pro['user_id']; ?></td>
+    <td><?php echo $pro['name']; ?></td>
+     <td><?php echo $pro['status'];?></td>
+
+   </tr>
+ 
+    <?php endforeach; ?>
+
+   
   <tr>
     <td></td>
     <td></td>
     <td></td>
     <td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
+ 
     <td></td>
   </tr>
-  <tr>
+  <!-- <tr>
     <td>aaa</td>
     <td>bbb</td>
     <td>ccc</td>
@@ -120,7 +137,7 @@
       </div>
       </div>
     </td>
-  </tr>
+  </tr> -->
   
 </table>
   <div class="row">
