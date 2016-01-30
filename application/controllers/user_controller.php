@@ -9,6 +9,7 @@ class user_controller extends CI_Controller
 		// $this->load->helper('url');
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('tank_auth');
+		$this->load->dbutil();
 	}
 
 	function index()
@@ -194,48 +195,68 @@ class user_controller extends CI_Controller
 
 	}
 
-  function show_c_details()
-  {
-  	$cid=$_GET['cid'];
-  	//echo $cid;
-  	$this->load->model('admin_model');
-  	 $data['inf']=$this->admin_model->get_c_details($cid);
-     $this->load->view('rahul/complaint_discription.html',$data);
-     
-  }
+	  function show_c_details()
+	  {
+	  	$cid=$_GET['cid'];
+	  	//echo $cid;
+	  	$this->load->model('admin_model');
+	  	 $data['inf']=$this->admin_model->get_c_details($cid);
+	     $this->load->view('rahul/complaint_discription.html',$data);
+	     
+	  }
 
 
-  function resolved()
-  {
-   $cid=$_GET['cid'];
-   echo $cid;
-    $this->load->model('admin_model');
-    $this->admin_model->status_change($cid,'1');
-    //$this->load->view('rahul/message.html'); ///temperory
-   // $this->load->view('rahul/complaint_discription.html',$data);
+	  function resolved()
+	  {
+	   $cid=$_GET['cid'];
+	   echo $cid;
+	    $this->load->model('admin_model');
+	    $this->admin_model->status_change($cid,'1');
+	    //$this->load->view('rahul/message.html'); ///temperory
+	   // $this->load->view('rahul/complaint_discription.html',$data);
 
-  }
-  function postpone()
-  {
-   $cid=$_GET['cid'];
-   echo $cid;
-    $this->load->model('admin_model');
-    $this->admin_model->status_change($cid,'2');
-    //$this->load->view('rahul/message.html'); ///temperory
-   // $this->load->view('rahul/complaint_discription.html',$data);
-}
+	  }
+	  function postpone()
+	  {
+	   $cid=$_GET['cid'];
+	   echo $cid;
+	    $this->load->model('admin_model');
+	    $this->admin_model->status_change($cid,'2');
+	    //$this->load->view('rahul/message.html'); ///temperory
+	   // $this->load->view('rahul/complaint_discription.html',$data);
+	}
 
-function deleted()
-  {
-   $cid=$_GET['cid'];
-   echo $cid;
-    $this->load->model('admin_model');
-    $this->admin_model->status_change($cid,'-1');
-    //$this->load->view('rahul/message.html'); ///temperory
-   // $this->load->view('rahul/complaint_discription.html',$data);
-}
+	function deleted()
+	  {
+	   $cid=$_GET['cid'];
+	   echo $cid;
+	    $this->load->model('admin_model');
+	    $this->admin_model->status_change($cid,'-1');
+	    //$this->load->view('rahul/message.html'); ///temperory
+	   // $this->load->view('rahul/complaint_discription.html',$data);
+	}
+	function show_grievances()
+	{
+		// $this->load->view('upvote.html');
+		if(!$this->tank_auth->is_logged_in())
+			redirect('auth/login');
+		$this->load->model('user_model');
+		$res['index'] = $this->user_model->get_grievances();
+		$this->load->view('upvote.html',$res);
+	
+	}
 
+	function inc_upvotes()
+	{
+		if(!$this->tank_auth->is_logged_in())
+			redirect('auth/login');
+		$gid = $_GET["gid"];
+		$this->load->model('user_model');
+		$this->user_model->inc_upvotes($gid);
+		$this->load->model('user_model');
+		$res['index'] = $this->user_model->get_grievances();
+		$this->load->view('upvote.html',$res);
 
-
+	}
 
 }

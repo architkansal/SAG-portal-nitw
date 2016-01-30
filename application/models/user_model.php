@@ -8,6 +8,7 @@ class user_model extends CI_Controller
   	parent::__construct();
     $this->load->helper('url');
     $this->load->library('tank_auth');
+    $this->load->dbutil();
   }
 
 
@@ -53,13 +54,7 @@ class user_model extends CI_Controller
 
   function reg_grievance($insert_data=NULL)
   {
-    //$data['sname'] =$this->input->post('sname');
-    // GID : AR811443-H-<1/2/3/4>
-    // COunt AR811443-H%
-    // cache_on*()
-    // cache_off()
-
-
+    
     $data['user_id'] = $this->tank_auth->get_user_id();
     $data['hostel'] =$this->input->post('dropdown1');
     $data['floor'] =$this->input->post('dropdown2');
@@ -79,15 +74,118 @@ class user_model extends CI_Controller
     
   }
   
-
-  
-
-
- /* function savepath($insert_data)
+  function get_grievances()
   {
 
-     $this->db->insert('imgtable', $insert_data);
+      $this ->db-> select('*')->from('grievances')->join('imgtable' , 'grievances.gid=imgtable.gid')
+      ->where('status' , '0');
+      $grp=$this->db->get();
+      $res=$grp->result_array();
+      $res2=$grp->result();
+
+      // print_r($res);
+      $delimiter=",";
+      $newline="\r\n";
+      // echo $this->dbutil->csv_from_result($grp,$delimiter,$newline);
+
+      return $res;
   }
-  */
+
+  function inc_upvotes($gid)
+  {
+    // $id = $this->tank_auth->get_user_id();
+   /* echo($id);
+    $this->db->select('grev_votes')
+        ->from('users')
+        ->where('id' , $id);
+    $grp = $this->db->get();
+    $delimiter=",";
+      $newline="\r\n";
+    $res =  $this->dbutil->csv_from_result($grp,$delimiter,$newline);
+    $complaintArray = explode(',',$res);
+    print_r($res);
+     print_r($complaintArray);
+    $i=0;
+    foreach ( $complaintArray as $k ) 
+    {
+      if($k[$i++]==$gid)return;
+
+    }
+     
+    if($grp->num_rows()==0)
+    {
+      $res=$gid;
+    }
+    else
+    {
+      $res = $res.",".$gid;
+    }
+
+
+
+    // array_push($complaintArray,$gid);
+    // print_r($complaintArray);
+    // array_filter($complaintArray);
+    
+    // foreach($complaintArray as $link)
+    // {
+    //     if($link == '')
+    //     {
+    //         unset($link);
+    //     }
+    // }
+    ///echo ($id);
+
+   //// print_r($res);
+    $data['grev_votes']=$res;
+    //print_r($data);
+     $this->db->where('id',$id)
+              ->update('users',$data);
+
+      $this->db->select('upvotes')
+              ->from('grievances')
+              ->where('gid',$gid);
+
+        $count2 =  ($this->db->get());
+        $count= $count2->result_array();
+        $cnt = $count[0]['upvotes'];
+        $cnt+=1;
+        $dat['upvotes'] = $cnt;
+
+        $this->db->where('gid' , $gid)
+                  ->update('grievances' , $dat );
+
+
+*/
+
+
+
+        $id = $this->tank_auth->get_user_id();
+        $this->db->select('*')->from('upvote')
+                ->where('gid',$gid)
+                ->where('user_id' , $id);
+          $res = $this->db->get();
+          if($res->num_rows()==0)
+          {
+            $data2['gid'] = $gid;
+            $data2['user_id']= $id;
+            $this->db->insert('upvote' , $data2);
+             $this->db->select('upvotes')
+              ->from('grievances')
+              ->where('gid',$gid);
+
+        $count2 =  ($this->db->get());
+        $count= $count2->result_array();
+        $cnt = $count[0]['upvotes'];
+        $cnt+=1;
+        $dat['upvotes'] = $cnt;
+
+        $this->db->where('gid' , $gid)
+                  ->update('grievances' , $dat );
+
+          }
+
+
+  }
 
 }
