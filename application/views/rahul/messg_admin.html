@@ -84,23 +84,36 @@
   <table id="customers">
   <tr>
     <th>S.No</th>
-    <th>User name</th>
+    <th>User_id</th>
+    <th>name</th>
     <th>Complaint id</th>
+    
     <th>Status</th>
+
   </tr>
+  <?php $x=1;?>
+   <?php foreach($det as $pro) :?>
+   <tr>
+   
+  
+    <td><?php echo $x++;?></td>
+    <td><?php echo $pro['user_id']; ?></td>
+    <td><?php echo $pro['name']; ?></td>
+    <td><?php echo $pro['cid'];?></td>
+    
+    <td><?php echo $pro['status'];?></td>
+ </tr>
+    <?php endforeach; ?>
+
   <tr>
     <td></td>
     <td></td>
     <td></td>
     <td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
+ 
     <td></td>
   </tr>
-  <tr>
+  <!-- <tr>
     <td>aaa</td>
     <td>bbb</td>
     <td>ccc</td>
@@ -120,7 +133,7 @@
       </div>
       </div>
     </td>
-  </tr>
+  </tr> -->
   
 </table>
   <div class="row">

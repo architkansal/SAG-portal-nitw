@@ -26,11 +26,11 @@ class user_controller extends CI_Controller
 				$this->load->view('slidemenu.html');
 			else if($group_id==11)
 				$this->load->view('rahul/elec-admin.html');
-			else if($group_id==22)
+			else if($group_id==44)
 				$this->load->view('rahul/carpenter_admin.html');
 			else if($group_id==33)
 				$this->load->view('rahul/lan_admin');
-			else if($group_id==44)
+			else if($group_id==22)
 				$this->load->view('rahul/plumber_admin.html');
 		}
 		else
@@ -95,15 +95,42 @@ class user_controller extends CI_Controller
   	}
     
 	else if($q==2)
-	$this->load->view('rahul/carpenter_admin.html');
+	{
+		$hcdid='22';
+		$arr['det']= $this->fetch_complaints($hcdid);
+		$this->load->view('rahul/plumber_admin.html',$arr);
+	}
+	
 	else if($q==3)
-	$this->load->view('rahul/plumber_admin.html');
+	{
+		$hcdid='33';
+		$arr['det']= $this->fetch_complaints($hcdid);
+
+		$this->load->view('rahul/lan_admin.html',$arr);
+	}
+
+	
 	else if($q==4)
-	$this->load->view('rahul/lan_admin.html');
+	{
+		$hcdid='44';
+		$arr['det']= $this->fetch_complaints($hcdid);
+		$this->load->view('rahul/carpenter_admin.html',$arr);
+	}
+	
 	else if($q==5)
-	$this->load->view('rahul/hostelg_admin.html');
+	{
+		$hcdid='55';
+		$arr['det']= $this->fetch_complaints($hcdid);
+		$this->load->view('rahul/hostelg_admin.html',$arr);
+	}
+	
 	else if($q==6)
-	$this->load->view('rahul/messg_admin.html');
+	{
+		$hcdid='66';
+		$arr['det']= $this->fetch_complaints($hcdid);
+		$this->load->view('rahul/messg_admin.html',$arr);
+	}
+	
  
   }
 
@@ -114,6 +141,7 @@ class user_controller extends CI_Controller
     $res=$this->admin_model->get_complaints($hcdid);
     return $res;
   }
+
 
 /*  function submit_grievance()   ///complaint form submit
 	{
@@ -165,5 +193,49 @@ class user_controller extends CI_Controller
 		}
 
 	}
+
+  function show_c_details()
+  {
+  	$cid=$_GET['cid'];
+  	//echo $cid;
+  	$this->load->model('admin_model');
+  	 $data['inf']=$this->admin_model->get_c_details($cid);
+     $this->load->view('rahul/complaint_discription.html',$data);
+     
+  }
+
+
+  function resolved()
+  {
+   $cid=$_GET['cid'];
+   echo $cid;
+    $this->load->model('admin_model');
+    $this->admin_model->status_change($cid,'1');
+    //$this->load->view('rahul/message.html'); ///temperory
+   // $this->load->view('rahul/complaint_discription.html',$data);
+
+  }
+  function postpone()
+  {
+   $cid=$_GET['cid'];
+   echo $cid;
+    $this->load->model('admin_model');
+    $this->admin_model->status_change($cid,'2');
+    //$this->load->view('rahul/message.html'); ///temperory
+   // $this->load->view('rahul/complaint_discription.html',$data);
+}
+
+function deleted()
+  {
+   $cid=$_GET['cid'];
+   echo $cid;
+    $this->load->model('admin_model');
+    $this->admin_model->status_change($cid,'-1');
+    //$this->load->view('rahul/message.html'); ///temperory
+   // $this->load->view('rahul/complaint_discription.html',$data);
+}
+
+
+
 
 }

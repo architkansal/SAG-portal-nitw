@@ -1,0 +1,114 @@
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+<script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+  <style>
+  body {
+    background: url(file:///home/rahul/Documents/111.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    }
+    h1 {
+    color: #ff4d4d
+;
+    text-decoration: underline;
+    font-family:Courier;
+}
+h3{
+	font-style: oblique;
+}
+
+  </style>
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+			
+			<h1>About Complaint:</h1>
+			
+		    </br>
+		    <p>
+		    <h3>CID:</h3><h5><?php echo $inf[0]['cid']; ?></h5>
+		    </p>
+		    <p>
+		    <h3>Username:</h3><h5><?php echo $inf[0]['cid']; ?></h5>
+		</p>
+		<p>
+		    <h3>Complaint Tag:</h3><h5><?php echo $inf[0]['cid']; ?></h5>
+		</p>
+		<p>
+		    <h3>Complaint Descripton:</h3><h5><?php echo $inf[0]['details']; ?></h5>
+		    <p>
+		    	<p>
+		    <h3>Date of Complaint:</h3><h5><?php echo $inf[0]['date']; ?></h5>
+		</p>
+		<p>
+		    <h3>Hostel Name:</h3><h5><?php echo $inf[0]['hostel']; ?></h5>
+		</p>
+		<p>
+		    <h3>Room Number:</h3><h5><?php echo $inf[0]['room']; ?></h5>
+		</p>
+		<p>
+		    <h3>Preferred Time:</h3><h5><?php echo $inf[0]['preftime']; ?></h5>
+		</p>
+		    <hr>
+		    <h2>Report:</h2>
+		    <h5></h5>
+
+	
+		</div>
+		<div class="col-md-4">
+		</br>
+	    </br>
+
+        </br>
+        <a href="resolved?cid=<?php echo $inf[0]['cid']; ?>">
+         <div class="card card-inverse card-danger text-xs-center">
+  <div class="card-block">
+    <blockquote class="card-blockquote">
+      <h3>Resolved</h3>
+      <p>CHOOSE if plroblem is completely solved</p>
+   
+    </blockquote>
+  </div>
+</div></a>
+</br>
+<a href="postpone?cid=<?php echo $inf[0]['cid']; ?>">
+<div class="card card-inverse card-danger text-xs-center">
+  <div class="card-block">
+    <blockquote class="card-blockquote">
+    	<h3>Postpone</h3>
+      <a href=""><p>CHOOSE to postpone the problem</p></a>
+      
+    </blockquote>
+  </div>
+</div>
+</a>
+</br>
+<a href="deleted?cid=<?php echo $inf[0]['cid']; ?>">
+<div class="card card-inverse card-danger text-xs-center">
+  <div class="card-block">
+    <blockquote class="card-blockquote">
+    	<h3>Delete/Fale</h3>
+    	<a href="">
+      <p>CHOOSE if problem is improper</p>
+  </a>
+     
+    </blockquote>
+  </div>
+</a>
+</div>
+
+            </div>  
+		</div>
+	</div>
+</div>
+  
+</div>
+</body>
+</html>

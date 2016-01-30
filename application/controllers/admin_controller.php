@@ -32,10 +32,10 @@ class Admin extends CI_Controller
   	$this->index();
   }
 
-  function fetch_complaints()
-  {
-    $this->load->model('admin_model');
-    $this->admin_model->get_complaints();
-  }
+  // function fetch_complaints()
+  // {
+  //   $this->load->model('admin_model');
+  //   $this->admin_model->get_complaints();
+  // }
 
 }

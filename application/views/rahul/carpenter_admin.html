@@ -82,25 +82,35 @@
     </div>
   </nav>
   <table id="customers">
+
   <tr>
     <th>S.No</th>
-    <th>User name</th>
     <th>Complaint id</th>
-    <th>Status</th>
+    <th>User_id</th>
+    <th>name</th>
+    
+    
+    <!-- <th>Status</th>   -->
   </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
+  <?php $x=1;?>
+   <?php foreach($det as $pro) :?>
+  
+   
+   <tr>
+      
+     <td ><?php echo $x++;?></td>
+
+    <td><a href="../user_controller/show_c_details?cid=<?php echo $pro['cid'];?>"><?php echo $pro['cid'];?></a></td>
+    <td><?php echo $pro['user_id']; ?></td>
+    <td><?php echo $pro['name']; ?></td>
+     <!-- <td><?php //echo $pro['status'];?></td> -->
+
+   </tr>
+ 
+    <?php endforeach; ?>
+
+   
+  <!-- <tr>
     <td>aaa</td>
     <td>bbb</td>
     <td>ccc</td>
@@ -120,7 +130,7 @@
       </div>
       </div>
     </td>
-  </tr>
+  </tr> -->
   
 </table>
   <div class="row">
@@ -133,7 +143,7 @@
     
       <div class="col-md-4">
       <h3 class="mid">Help</h3>
-      <p class="mid1"><a href="">Forget password</a></p>
+      <p class="mid1"><a href="#">Forget password</a></p>
       <p class="mid1"><a href="">Unable to report</a></p>
       <p class="mid1"><a href="">search</a></p>
       </div>

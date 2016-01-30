@@ -32,19 +32,42 @@ class Admin_model extends CI_Controller
 
   }
   
-  function get_complaints($hcdid)
+  function get_complaints($hcdid) ///must be solved
   {
-    $q=0;
-    $wh="'complaint.hcdid'=$hcdid AND'complaint.status'=$q,  AND 'complaint.user_id'='users.id'";
-    $this->db->select('user_id','cid','username','name')
-    ->from('complaint','users')
-    ->where( $wh );
-    $grp=$this->db->get_where();
+    $q=1;
+    // $this->db->select('username');
+    // $this->db->from('users');
+    // $this->db->where('id IN ');
+
+    $this->db->select('complaint.user_id,complaint.cid,complaint.status,users.name');
+    $this->db->from('complaint,users');
+    $this->db->where('complaint.hcdid',$hcdid);
+    $this->db->where('complaint.status',!$q);
+    //$this->db->where('complaint.user_id','users.id');
+    //$this->db->where('complaint.user_id'='users.id');
+    $grp=$this->db->get();
     $res=$grp->result_array();
-    print_r($res);
+    //print_r($res);
      return $res;
 
   }
 
+  function get_c_details($cid)
+  {
+    //echo $cid;
+    $this->db->select('cid,user_id,date,hcdid,preftime,room,hostel,mobile,details')
+             ->from('complaint')
+             ->where('cid',$cid);
+    $query=$this->db->get();
+    //print_r($query->result_array());
+    return($query->result_array());
+  }
 
+
+   function status_change($cid,$status)
+   {
+    $this->db->where('cid',$cid)
+            ->update('complaint',array('status'=>$status));
+
+   }
 }
