@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Slick &amp; clean CSS3 Forms Pack</title>
+    <meta name="description" content="Slick &amp; clean CSS3 Forms Pack" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Forms stylesheet -->
+    <link rel="stylesheet" type="text/css" href="../main1.css" media="screen" />
+    <!-- / Forms stylesheet -->
+    <link rel="stylesheet" type="text/css" href="../demo.css" media="screen" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <!--[if IE 9]>
+        <script type="text/javascript" src="js/placeholder.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+        if(top != self) {
+            window.open(self.location.href, '_top');
+        }
+    </script>
+    <script type="text/javascript">
+        $(window).load(function() {
+            // Preloader
+            $("#switch").click(function() {
+              $(this).toggleClass("on");
+              $("#links").toggleClass("odprt zaprt");
+            });
+        });
+    </script>
+</head>
+<body>
+
+
+<div class="row">
+<div class="col-md-5">
+</div>
+<div class="col-md-7">
+
+<div id="page-2">
+
+    <div class="clrfx-buy"></div>
+
+    <section id="slick">
+        <!-- Social buttons -->
+        <!-- <div class="sb">
+            <a href="#" class="fb entypo-thumbs-up"><span class="slick-tip right">Like us on Facebook</span></a>
+            <a href="#" class="gc entypo-google-circles"><span class="slick-tip right">Find us in Circles</span></a>
+            <a href="#" class="tw entypo-twitter"><span class="slick-tip right">Follow us on Twitter</span></a>
+        </div>  -->
+        <!-- Feedback form -->
+        <div class="feedback-form">
+            <!-- Title -->
+            <div class="title">Register your complaint here</div> 
+            <!-- Intro text -->
+            <!-- <p class="intro"><b>Good support is the king.</b> Send us your feedback or suggestions so we can make better experience for you.</p> -->
+            <!-- Form fields -->
+            <br>
+        </br>
+    </br>
+</br>
+            <form action="" name="feedback" id="feedback" method="post">
+                <!-- Name input -->
+                <div class="field">
+                    <input name="name" placeholder="Your name" type="text" id="name" required />
+                    <span class="entypo-star icon"></span>
+                    <span class="slick-tip left">Enter your name</span>
+                </div>
+                <!-- Email input -->
+                <div class="field">
+                    <input name="hostel" placeholder="Hostel name" type="text" id="hostel" required />
+                    <span class="entypo-mobile icon"></span>
+                    <span class="slick-tip left">Enter your hostel</span>
+                </div>
+                <div class="field">
+                    <input name="room" placeholder="room number" type="text" id="room" required />
+                    <span class="entypo-mobile icon"></span>
+                    <span class="slick-tip left">Enter your room number</span>
+                </div>
+                <div class="field">
+                    <input name="contact" placeholder="contact number" type="number" id="hostel" required />
+                    <span class="entypo-mail icon"></span>
+                    <span class="slick-tip left">Enter your contact number</span>
+                </div>
+                <!-- Subject input -->
+                <div class="field">
+                    <select name="subject" id="subject" class="grayed" onClick="this.className=this.options[this.selectedIndex].className">
+                        <option value="" disabled="disabled" selected="selected" class="disabled">Complaints</option>
+                        <option value="">1.Fans stopped working </option>
+                        <option value="">2.Tubes/Bulbs problem</option>
+                        <option value="">3.Sockets/switch boards</option>
+                          <option value="">4.others</option>
+                    </select>
+                    <div id="arrow-select"></div>
+                    <svg id="arrow-select-svg"></svg>
+                    <span class="entypo-menu icon"></span>
+                    <span class="slick-tip left">Choose complaint</span>
+                </div>
+                
+                <!-- Message input -->
+                <div class="field">
+                    <textarea name="message" placeholder="Describe problem" id="message" ></textarea>
+                    <span class="entypo-list icon"></span>
+                    <span class="slick-tip left">Describe your problem</span>
+                </div>
+                <!-- Block checboxes -->
+                <div class="field">
+                    <p class="ratings"><span class="entypo-info-circled"></span>Please provide preferred time</p>
+                    <fieldset class="blocks" id="time">
+                        <!-- 18 - 25 -->
+                        <input type="radio" id="t1" name="time" value="9-11 am" />
+                        <label for="age-1">9-11am</label>
+                        <!-- 25 - 35 -->
+                        <input type="radio" id="t2" name="time" value="11am-1pm" />
+                        <label for="age-2">11am-1pm</label>
+                        <!-- 35 - 45 -->
+                        <input type="radio" id="t3" name="time" value="1-3pm" />
+                        <label for="age-3">1-3pm</label>
+                        <!-- 45 - 60 -->
+                        <input type="radio" id="t4" name="time" value="3-5pm" />
+                        <label for="age-4">3-5pm</label>
+                        <!-- 65 - 75 -->
+                        <input type="radio" id="t5" name="time" value="5-7pm" />
+                        <label for="age-5">5-7pm</label>
+                        <!-- 75 - 90 -->
+                        <input type="radio" id="t6" name="time" value="7-9pm" />
+                        <label for="age-6">7-9pm</label>
+                    </fieldset>
+                </div>
+                <!-- <div class="clrfx mt-10 mb-20 bt"></div> -->
+                <!-- Stars rating 1 -->
+                <!-- <div class="field">
+                    <p class="ratings"><span class="entypo-briefcase"></span>Our services &amp; customer care</p>
+                    <fieldset class="stars" id="service-rating">
+                        
+                        <input type="radio" id="service-5" name="service-rating" value="5" />
+                        <label for="service-5" ><span class="slick-tip rate">Awesome</span></label>
+                        
+                        <input type="radio" id="service-4" name="service-rating" value="4" />
+                        <label for="service-4" ><span class="slick-tip rate">Pretty satisfied</span></label>
+                        
+                        <input type="radio" id="service-3" name="service-rating" value="3" checked="checked" />
+                        <label for="service-3" ><span class="slick-tip rate">Not best, not worst</span></label>
+                
+                        <input type="radio" id="service-2" name="service-rating" value="2" />
+                        <label for="service-2" ><span class="slick-tip rate">Room for improvement</span></label>
+                        
+                        <input type="radio" id="service-1" name="service-rating" value="1" />
+                        <label for="service-1" ><span class="slick-tip rate">Not soo good</span></label>
+                    </fieldset>
+                </div> -->
+                <!-- <div class="clrfx mt-10"></div> -->
+                <!-- Stars rating 2 -->
+                <!-- <div class="field">
+                    <p class="ratings"><span class="entypo-chat"></span>After sale's support &amp; help</p>
+                    <fieldset class="stars" id="support-rating">
+                
+                        <input type="radio" id="support-5" name="support-rating" value="5" />
+                        <label for="support-5" ><span class="slick-tip rate">Awesome</span></label>
+                        
+                        <input type="radio" id="support-4" name="support-rating" value="4" />
+                        <label for="support-4" ><span class="slick-tip rate">Pretty satisfied</span></label>
+                        
+                        <input type="radio" id="support-3" name="support-rating" value="3" checked="checked" />
+                        <label for="support-3" ><span class="slick-tip rate">Not best, not worst</span></label>
+                        
+                        <input type="radio" id="support-2" name="support-rating" value="2" />
+                        <label for="support-2" ><span class="slick-tip rate">Room for improvement</span></label>
+                        
+                        <input type="radio" id="support-1" name="support-rating" value="1" />
+                        <label for="support-1" ><span class="slick-tip rate">Not soo good</span></label>
+                    </fieldset>
+                </div> -->
+                <!-- <div class="clrfx mt-10"></div> -->
+                <!-- Stars rating 3 -->
+                <!-- <div class="field">
+                    <p class="ratings"><span class="entypo-users"></span>Our team &amp; staff valuation</p>
+                    <fieldset class="stars" id="team-rating">
+                        
+                        <input type="radio" id="team-5" name="team-rating" value="5" />
+                        <label for="team-5" ><span class="slick-tip rate">Awesome</span></label>
+                
+                        <input type="radio" id="team-4" name="team-rating" value="4" />
+                        <label for="team-4" ><span class="slick-tip rate">Pretty satisfied</span></label>
+                        
+                        <input type="radio" id="team-3" name="team-rating" value="3" checked="checked" />
+                        <label for="team-3" ><span class="slick-tip rate">Not best, not worst</span></label>
+                        
+                        <input type="radio" id="team-2" name="team-rating" value="2" />
+                        <label for="team-2" ><span class="slick-tip rate">Room for improvement</span></label>
+                    
+                        <input type="radio" id="team-1" name="team-rating" value="1" />
+                        <label for="team-1" ><span class="slick-tip rate">Not soo good</span></label>
+                    </fieldset>
+                </div> -->
+                <div class="clrfx mt-10 mb-20 bt"></div>
+                <!-- Tick checboxes -->
+                <!-- <div class="field">
+                    <p class="ratings"><span class="entypo-link"></span>How can we improve your satisfaction?</p>
+                    <div class="clrfx mt-20"></div>
+                    <!-- Option 1 -->
+                    <!-- <div class="w-30 mr-5">
+                        <input type="checkbox" id="new-services" name="new-services" />
+                        <label for="new-services" class="tick"><span>New services</span></label>
+                    </div>
+                    <!-- Option 2 -->
+                    <!-- <div class="w-30 mr-5">
+                        <input type="checkbox" id="better-support" name="better-support" />
+                        <label for="better-support" class="tick"><span>Better support</span></label>
+                    </div>
+                    <!-- Option 3 -->
+                    <!-- <div class="w-30">
+                        <input type="checkbox" id="faster-response" name="faster-response" />
+                        <label for="faster-response" class="tick"><span>Faster response</span></label>
+                    </div>
+                    <div class="clrfx mt-10"></div>
+                    <!-- Option 4 -->
+                    <!-- <div class="w-30 mr-5">
+                        <input type="checkbox" id="performance" name="performance" />
+                        <label for="performance" class="tick"><span>Performance</span></label>
+                    </div>
+                    <!-- Option 5 -->
+                    <!-- <div class="w-30 mr-5">
+                        <input type="checkbox" id="new-products" name="new-products" />
+                        <label for="new-products" class="tick"><span>New products</span></label>
+                    </div> -->
+                    <!-- Option 6 -->
+                    <!-- <div class="w-30">
+                        <input type="checkbox" id="more-updates" name="more-updates" />
+                        <label for="more-updates" class="tick"><span>More updates</span></label>
+                    </div>
+                </div> --> 
+                <div class="clrfx mt-20"></div>
+                <!-- Terms and Conditions link -->
+                <div class="terms w-47">Your information won’t be disclosed.<br />Read our <a href="#terms-popup">Terms and Conditions</a>.</div>
+                <input type="submit" value="Send" class="send" form="feedback" name="send" />
+            </form>
+            <!-- / Form fields -->
+        </div>
+        <!-- / Feedback form -->
+        <!-- Terms and conditions -->
+        <div id="terms-popup" class="terms-window">
+            <a href="#close" class="close-overlay"></a>
+            <div>
+                <a href="#close" class="close entypo-cancel-circled"></a>
+                <div class="title">Terms &amp; Conditions</div>
+                <p class="intro" style=color:rgb(128,128,150)>
+                1. Describe your problem in least words possible( if its not mentioned in drop down)<br>
+                2. PLEASE enter a valid problem.<br>
+                3. Don't fill the form unnecessarily.<br>
+                4. Choose time at which you will be available in your room only.<br>
+                5. Provide  valid contact number only. </p>
+                
+            </div>
+        </div>
+        <!-- / Terms and conditions -->
+    </section>
+
+    <div class="clrfx-buy"></div>
+
+</div>
+</div>
+</div>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-40721121-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>
