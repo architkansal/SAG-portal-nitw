@@ -174,11 +174,7 @@ class user_controller extends CI_Controller
 		{
 			$data = array('upload_data' => $this->upload->data());
 
-			// $this->load->view('upload_success', $data);
-			// print_r($data);
-			// echo('<h1>hii !!</h1>');
-			// var_dump($data);
-			// echo('<h1>hii !!</h1>');
+			
 			// print($data['upload_data']['file_name']);
 			echo('<h1>done!!</h1>');
 						$insert_data = array(
@@ -194,37 +190,6 @@ class user_controller extends CI_Controller
 
 	}
 
-
-	  function show_c_details()
-	  {
-	  	$cid=$_GET['cid'];
-	  	//echo $cid;
-	  	$this->load->model('admin_model');
-	  	 $data['inf']=$this->admin_model->get_c_details($cid);
-	     $this->load->view('rahul/complaint_discription.html',$data);
-	     
-	  }
-
-
-	  function resolved()
-	  {
-	   $cid=$_GET['cid'];
-	   echo $cid;
-	    $this->load->model('admin_model');
-	    $this->admin_model->status_change($cid,'1');
-	    //$this->load->view('rahul/message.html'); ///temperory
-	   // $this->load->view('rahul/complaint_discription.html',$data);
-
-	  }
-	  function postpone()
-	  {
-	   $cid=$_GET['cid'];
-	   echo $cid;
-	    $this->load->model('admin_model');
-	    $this->admin_model->status_change($cid,'2');
-	    //$this->load->view('rahul/message.html'); ///temperory
-	   // $this->load->view('rahul/complaint_discription.html',$data);
-	}
 
   function show_c_details()
   {
@@ -273,15 +238,7 @@ function deleted()
   }
 
 
-	function deleted()
-	  {
-	   $cid=$_GET['cid'];
-	   echo $cid;
-	    $this->load->model('admin_model');
-	    $this->admin_model->status_change($cid,'-1');
-	    //$this->load->view('rahul/message.html'); ///temperory
-	   // $this->load->view('rahul/complaint_discription.html',$data);
-	}
+	
 	function show_grievances()
 	{
 		// $this->load->view('upvote.html');
