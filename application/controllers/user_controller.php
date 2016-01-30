@@ -79,7 +79,7 @@ class user_controller extends CI_Controller
 
 	function complaint_reg_success()
 	{
-		$this->load->view('rahul/message.html');
+		$this->load->view('rahul/success.html');
 	}
 
 
@@ -201,6 +201,8 @@ class user_controller extends CI_Controller
   	$this->load->model('admin_model');
   	 $data['inf']=$this->admin_model->get_c_details($cid);
      $this->load->view('rahul/complaint_discription.html',$data);
+     $data['query']=$this->admin_model->get_report($cid);
+     $this->load->view('rahul/complaint_report.html',$data);
      
   }
 
@@ -208,7 +210,7 @@ class user_controller extends CI_Controller
   function resolved()
   {
    $cid=$_GET['cid'];
-   echo $cid;
+   //echo $cid;
     $this->load->model('admin_model');
     $this->admin_model->status_change($cid,'1');
     //$this->load->view('rahul/message.html'); ///temperory
@@ -218,7 +220,7 @@ class user_controller extends CI_Controller
   function postpone()
   {
    $cid=$_GET['cid'];
-   echo $cid;
+   //echo $cid;
     $this->load->model('admin_model');
     $this->admin_model->status_change($cid,'2');
     //$this->load->view('rahul/message.html'); ///temperory
@@ -228,7 +230,7 @@ class user_controller extends CI_Controller
 function deleted()
   {
    $cid=$_GET['cid'];
-   echo $cid;
+   //echo $cid;
     $this->load->model('admin_model');
     $this->admin_model->status_change($cid,'-1');
     //$this->load->view('rahul/message.html'); ///temperory

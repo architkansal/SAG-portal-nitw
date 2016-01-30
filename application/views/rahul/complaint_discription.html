@@ -67,6 +67,7 @@ h3{
 	    </br>
 
         </br>
+        <?php if($inf[0]['status']!=1): ?>
         <a href="resolved?cid=<?php echo $inf[0]['cid']; ?>">
          <div class="card card-inverse card-danger text-xs-center">
   <div class="card-block">
@@ -78,6 +79,7 @@ h3{
   </div>
 </div></a>
 </br>
+
 <a href="postpone?cid=<?php echo $inf[0]['cid']; ?>">
 <div class="card card-inverse card-danger text-xs-center">
   <div class="card-block">
@@ -95,13 +97,14 @@ h3{
   <div class="card-block">
     <blockquote class="card-blockquote">
     	<h3>Delete/Fale</h3>
-    	<a href="">
+    	<a href="#">
       <p>CHOOSE if problem is improper</p>
   </a>
      
     </blockquote>
   </div>
 </a>
+<?php endif; ?>
 </div>
 
             </div>  

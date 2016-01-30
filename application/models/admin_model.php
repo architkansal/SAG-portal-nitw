@@ -32,19 +32,15 @@ class Admin_model extends CI_Controller
 
   }
   
-  function get_complaints($hcdid) ///must be solved
+  function get_complaints($hcdid) 
   {
     $q=1;
-    // $this->db->select('username');
-    // $this->db->from('users');
-    // $this->db->where('id IN ');
-
-    $this->db->select('complaint.user_id,complaint.cid,complaint.status,users.name');
-    $this->db->from('complaint,users');
+    
+    $this->db->select('complaint.user_id,complaint.cid,complaint.status,users.name,users.contact');
+    $this->db->from('complaint');
+    $this->db->join('users','users.id=complaint.user_id');
     $this->db->where('complaint.hcdid',$hcdid);
     $this->db->where('complaint.status',!$q);
-    //$this->db->where('complaint.user_id','users.id');
-    //$this->db->where('complaint.user_id'='users.id');
     $grp=$this->db->get();
     $res=$grp->result_array();
     //print_r($res);
@@ -55,7 +51,7 @@ class Admin_model extends CI_Controller
   function get_c_details($cid)
   {
     //echo $cid;
-    $this->db->select('cid,user_id,date,hcdid,preftime,room,hostel,mobile,details')
+    $this->db->select('cid,user_id,date,hcdid,preftime,room,hostel,mobile,details,status')
              ->from('complaint')
              ->where('cid',$cid);
     $query=$this->db->get();
@@ -68,6 +64,36 @@ class Admin_model extends CI_Controller
    {
     $this->db->where('cid',$cid)
             ->update('complaint',array('status'=>$status));
+            $data['cid']=$cid;
+             
+    if($status==0)
+    {
+        $data['ts_details']="The complaint is updated as pending";
+    }
+    elseif($status==1)
+    {
+        $data['ts_details']="The complaint is updated as resolved";
+    }
+    elseif($status==-1)
+    {
+        $data['ts_details']="The complaint is updated as false";
+    }
+     elseif($status==2)
+    {
+        $data['ts_details']="The complaint is updated as postponed";
+    }
+     
+      
+    $this->db->insert('cupdates',$data);
+   }
 
+   function get_report($cid)
+   {
+    $this->db->select('time_stamp,ts_details')
+             ->from('cupdates')
+             ->where('cid',$cid);
+             
+    $query=$this->db->get();
+    return($query->result_array());
    }
 }
