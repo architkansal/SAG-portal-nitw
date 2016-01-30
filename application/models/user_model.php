@@ -49,5 +49,45 @@ class user_model extends CI_Controller
       return $grp1;
   }
 
+    
+
+  function reg_grievance($insert_data=NULL)
+  {
+    //$data['sname'] =$this->input->post('sname');
+    // GID : AR811443-H-<1/2/3/4>
+    // COunt AR811443-H%
+    // cache_on*()
+    // cache_off()
+
+
+    $data['user_id'] = $this->tank_auth->get_user_id();
+    $data['hostel'] =$this->input->post('dropdown1');
+    $data['floor'] =$this->input->post('dropdown2');
+    $data['tag'] =$this->input->post('dropdown3');
+    $data['details']=$this->input->post('description');
+    $this->db->insert('grievances',$data);
+    if($insert_data!=NULL)
+    {
+
+      $gid=$this->db->insert_id();
+      // $data1['hcdid']=$_GET['hcdid'];
+      // $data1['details']=$this->input->post('description');
+      // 'name' => $image_data['file_name'],
+      $insert_data['gid']= $gid;
+      $this->db->insert('imgtable', $insert_data);
+    }
+    
+  }
+  
+
+  
+
+
+ /* function savepath($insert_data)
+  {
+
+     $this->db->insert('imgtable', $insert_data);
+  }
+  */
 
 }

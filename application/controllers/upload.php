@@ -33,8 +33,19 @@ class Upload extends CI_Controller {
 		{
 			$data = array('upload_data' => $this->upload->data());
 
+			// $this->load->view('upload_success', $data);
+
+
+			$insert_data = array(
+                    'name' => $image_data['file_name'],
+                    'path' => $image_data['full_path'],
+                    'thumb_path'=> $image_data['file_path'] . 'thumbs/'. $image_data['file_name'],
+                     );
+			$this->load->model('user_model');
+			$this->user_model->savepath($inert_data);
 			$this->load->view('upload_success', $data);
 		}
+
 	}
 }
 ?>

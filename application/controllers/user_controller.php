@@ -6,7 +6,8 @@ class user_controller extends CI_Controller
 	{
 		parent::__construct();
 
-		$this->load->helper('url');
+		// $this->load->helper('url');
+		$this->load->helper(array('form', 'url'));
 		$this->load->library('tank_auth');
 	}
 
@@ -114,5 +115,55 @@ class user_controller extends CI_Controller
     return $res;
   }
 
+/*  function submit_grievance()   ///complaint form submit
+	{
+		$this->load->model('user_model');
+		$gid = $this->user_model->reg_grievance();
+
+		$this->complaint_reg_success();
+	}
+*/
+	function do_upload()
+	{
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '100';
+		$config['max_width']  = '1024';
+		$config['max_height']  = '768';
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload())
+		{
+			// $error = array('error' => $this->upload->display_errors());
+
+			// $this->load->view('upload_form', $error);
+
+			$this->load->model('user_model');
+			$this->user_model->reg_grievance();
+		}
+		else
+		{
+			$data = array('upload_data' => $this->upload->data());
+
+			// $this->load->view('upload_success', $data);
+			// print_r($data);
+			// echo('<h1>hii !!</h1>');
+			// var_dump($data);
+			// echo('<h1>hii !!</h1>');
+			// print($data['upload_data']['file_name']);
+			echo('<h1>done!!</h1>');
+						$insert_data = array(
+                    'name' => $data['upload_data']['file_name'],
+                    'path' => $data['upload_data']['full_path'],
+                    // 'thumb_path'=> $data['upload_data']['file_path'] . 'thumbs/'. $data['upload_data']['file_name'],
+                     );
+			$this->load->model('user_model');
+			$this->user_model->reg_grievance($insert_data);
+			// $this->load->view('upload_success', $data);
+			// $this->complaint_reg_success();
+		}
+
+	}
 
 }

@@ -59,12 +59,12 @@ input[type=time], select {
 <div class="col-md-4">
 </div>
 <div class="col-md-4">
-<form class="first">
+<?php echo form_open_multipart('user_controller/do_upload');?>
  <!-- <div class="row">
        <div class="col-md-8"> -->
        <h4>Select your Hostel</h4>
 
-       <select name="dropdown">
+       <select name="dropdown1">
        <option value="Ultra mega" selected>Ultra mega</option>
        <option value="Mega">Mega</option>
        <option value="4th block">4th block</option>
@@ -76,7 +76,7 @@ input[type=time], select {
        <!-- </div> -->
        <!-- <div class="col-md-4"> -->
        <h4>Floor</h4>
-       <select name="dropdown">
+       <select name="dropdown2">
        <option value="0" selected>0</option>
        <option value="1">1</option>
        <option value="2">2</option>
@@ -94,7 +94,7 @@ input[type=time], select {
 <br/>
 <h4>Select your problem</h4>
 
-<select name="dropdown">
+<select name="dropdown3">
 <option value="Lift not working" selected>Lift not working</option>
 <option value="Water coolers empty">Water coolers empty</option>
 <option value="Mosquitoes">Mosquitoes</option>
@@ -110,11 +110,24 @@ input[type=time], select {
 <p>( not more than 50 words )</p>
 <textarea rows="5" cols="30" name="description" maxlength="200" required>
 </textarea>
+ <!-- <?//echo $error;?> -->
+<h4>Wanna Upload an Image??</h4>
+<!-- <?php //echo form_open_multipart('user_controller/do_upload');?> -->
+
+<input type="file" name="userfile" size="20" />
+
+<br /><br />
+
+<!-- <input type="submit" value="upload" /> -->
+<!-- </form> -->
+
+ <input type="submit" value="submit" class="btn btn-success btn-block">
+
 </form>
-<button type="button" class="btn btn-success btn-block">Submit</button>
 </div>
 <div class="col-md-4">
 </div>
 </div>
+
 </body>
 </html>
