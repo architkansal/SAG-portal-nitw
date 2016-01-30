@@ -75,8 +75,15 @@ class user_controller extends CI_Controller
 	function show_details()
   {
   	$q=$_GET['page'];
+    
+     // echo "hello there";
   	if($q==1)
-    $this->load->view('rahul/elec-admin.html');
+  	{
+  		$hcdid='11';
+  	    $arr['det']= $this->fetch_complaints($hcdid);
+  		$this->load->view('rahul/elec-admin.html',$arr);
+  	}
+    
 	else if($q==2)
 	$this->load->view('rahul/carpenter_admin.html');
 	else if($q==3)
@@ -90,6 +97,13 @@ class user_controller extends CI_Controller
  
   }
 
+
+  function fetch_complaints($hcdid)
+  {
+    $this->load->model('admin_model');
+    $res=$this->admin_model->get_complaints($hcdid);
+    return $res;
+  }
 
 
 }
