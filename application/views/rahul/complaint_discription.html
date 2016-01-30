@@ -65,17 +65,20 @@ h3{
 		<div class="col-md-4">
 		</br>
 	    </br>
+
         </br>
+        <a href="resolved?cid=<?php echo $inf[0]['cid']; ?>">
          <div class="card card-inverse card-danger text-xs-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <h3>Resolved</h3>
-      <a href=""><p>CHOOSE if plroblem is completely solved</p></a>
+      <p>CHOOSE if plroblem is completely solved</p>
    
     </blockquote>
   </div>
-</div>
+</div></a>
 </br>
+<a href="postpone?cid=<?php echo $inf[0]['cid']; ?>">
 <div class="card card-inverse card-danger text-xs-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
@@ -85,7 +88,9 @@ h3{
     </blockquote>
   </div>
 </div>
+</a>
 </br>
+<a href="deleted?cid=<?php echo $inf[0]['cid']; ?>">
 <div class="card card-inverse card-danger text-xs-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
@@ -96,6 +101,7 @@ h3{
      
     </blockquote>
   </div>
+</a>
 </div>
 
             </div>  

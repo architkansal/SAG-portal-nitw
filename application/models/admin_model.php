@@ -32,9 +32,9 @@ class Admin_model extends CI_Controller
 
   }
   
-  function get_complaints($hcdid)
+  function get_complaints($hcdid) ///must be solved
   {
-    $q=3;
+    $q=1;
     // $this->db->select('username');
     // $this->db->from('users');
     // $this->db->where('id IN ');
@@ -54,14 +54,20 @@ class Admin_model extends CI_Controller
 
   function get_c_details($cid)
   {
-    echo $cid;
+    //echo $cid;
     $this->db->select('cid,user_id,date,hcdid,preftime,room,hostel,mobile,details')
              ->from('complaint')
              ->where('cid',$cid);
     $query=$this->db->get();
-    print_r($query->result_array());
+    //print_r($query->result_array());
     return($query->result_array());
   }
 
 
+   function status_change($cid,$status)
+   {
+    $this->db->where('cid',$cid)
+            ->update('complaint',array('status'=>$status));
+
+   }
 }
