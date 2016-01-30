@@ -31,3 +31,11 @@ class Admin extends CI_Controller
   	$this->admin_model->change_status();
   	$this->index();
   }
+
+  function fetch_complaints()
+  {
+    $this->load->model('admin_model');
+    $this->admin_model->get_complaints();
+  }
+
+}

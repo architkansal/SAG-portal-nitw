@@ -33,7 +33,7 @@ class user_model extends CI_Controller
     // $data1['details']=$this->input->post('description');
 
   }
-
+  
   function group_id()
   {
     $id = $this->tank_auth->get_user_id();
@@ -48,5 +48,6 @@ class user_model extends CI_Controller
       // echo "ID is" . $id;
       return $grp1;
   }
+
 
 }

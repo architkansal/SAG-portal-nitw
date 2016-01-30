@@ -20,7 +20,17 @@ class user_controller extends CI_Controller
 			if($group_id==0)
 				$this->load->view('rahul/login.html');
 			else if($group_id==1)
-				$this->load->view('rahul/admin.html');
+				$this->load->view('slidemenu.html');
+			else if($group_id==2)
+				$this->load->view('slidemenu.html');
+			else if($group_id==11)
+				$this->load->view('rahul/elec-admin.html');
+			else if($group_id==22)
+				$this->load->view('rahul/carpenter_admin.html');
+			else if($group_id==33)
+				$this->load->view('rahul/lan_admin');
+			else if($group_id==44)
+				$this->load->view('rahul/plumber_admin.html');
 		}
 		else
 	 	{
@@ -74,9 +84,15 @@ class user_controller extends CI_Controller
 
 	function show_details()
   {
-  	$q=$_GET['page'];
+  	$q=$_GET['p'];
+
   	if($q==1)
-    $this->load->view('rahul/elec-admin.html');
+  	{
+  		$hcdid='11';
+  	    $arr['det']= $this->fetch_complaints($hcdid);
+  		$this->load->view('rahul/elec-admin.html',$arr);
+  	}
+    
 	else if($q==2)
 	$this->load->view('rahul/carpenter_admin.html');
 	else if($q==3)
@@ -90,6 +106,13 @@ class user_controller extends CI_Controller
  
   }
 
+
+  function fetch_complaints($hcdid)
+  {
+    $this->load->model('admin_model');
+    $res=$this->admin_model->get_complaints($hcdid);
+    return $res;
+  }
 
 
 }

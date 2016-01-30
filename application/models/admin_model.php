@@ -6,6 +6,8 @@ class Admin_model extends CI_Controller
   function __construct()
   {
   	parent::__construct();
+    $this->load->helper('url');
+    $this->load->library('tank_auth');
   }
 
 
@@ -29,3 +31,20 @@ class Admin_model extends CI_Controller
     $this->db->insert('complaint',$data);
 
   }
+  
+  function get_complaints($hcdid)
+  {
+    $q=0;
+    $wh="'complaint.hcdid'=$hcdid AND'complaint.status'=$q,  AND 'complaint.user_id'='users.id'";
+    $this->db->select('user_id','cid','username','name')
+    ->from('complaint','users')
+    ->where( $wh );
+    $grp=$this->db->get_where();
+    $res=$grp->result_array();
+    print_r($res);
+     return $res;
+
+  }
+
+
+}
