@@ -19,7 +19,7 @@ class user_controller extends CI_Controller
 			$this->load->model('user_model');
 			$group_id=$this->user_model->group_id();
 			if($group_id==0)
-				$this->load->view('rahul/login.html');
+				$this->load->view('FORMS/lan.html');
 			else if($group_id==1)
 				$this->load->view('slidemenu.html');
 			else if($group_id==2)
@@ -79,12 +79,14 @@ class user_controller extends CI_Controller
 
 	function complaint_reg_success()
 	{
-		$this->load->view('rahul/success.html');
+		$this->load->view('successs_submission page.html');
 	}
 
 
 	function show_details()
   {
+  	if(!$this->tank_auth->is_logged_in())
+			redirect('auth/login');
   	$q=$_GET['p'];
 
   	if($q==1)
@@ -137,6 +139,8 @@ class user_controller extends CI_Controller
 
   function fetch_complaints($hcdid)
   {
+  	if(!$this->tank_auth->is_logged_in())
+			redirect('auth/login');
     $this->load->model('admin_model');
     $res=$this->admin_model->get_complaints($hcdid);
     return $res;
@@ -158,6 +162,7 @@ class user_controller extends CI_Controller
 		$config['max_size']	= '100';
 		$config['max_width']  = '1024';
 		$config['max_height']  = '768';
+		// $config['file_name']  = ($this->db->insert_id() + 1)."jpg";  
 
 		$this->load->library('upload', $config);
 
@@ -193,6 +198,8 @@ class user_controller extends CI_Controller
 
   function show_c_details()
   {
+  	if(!$this->tank_auth->is_logged_in())
+			redirect('auth/login');
   	$cid=$_GET['cid'];
   	//echo $cid;
   	$id=$this->tank_auth->get_user_id();
@@ -209,32 +216,41 @@ class user_controller extends CI_Controller
 
   function resolved()
   {
+  	if(!$this->tank_auth->is_logged_in())
+			redirect('auth/login');
    $cid=$_GET['cid'];
    //echo $cid;
     $this->load->model('admin_model');
     $this->admin_model->status_change($cid,'1');
+    echo('<h2> Status Updated Successfully. <a href ="http://localhost/SAG-portal-nitw/index.php/user_controller" > click here </a> to go back</h2>');
     //$this->load->view('rahul/message.html'); ///temperory
    // $this->load->view('rahul/complaint_discription.html',$data);
 
   }
   function postpone()
   {
+  	if(!$this->tank_auth->is_logged_in())
+			redirect('auth/login');
    $cid=$_GET['cid'];
    //echo $cid;
     $this->load->model('admin_model');
     $this->admin_model->status_change($cid,'2');
+    echo('<h2> Status Updated Successfully. <a href ="http://localhost/SAG-portal-nitw/index.php/user_controller" > click here </a> to go back</h2>');
     //$this->load->view('rahul/message.html'); ///temperory
    // $this->load->view('rahul/complaint_discription.html',$data);
 }
 
 function deleted()
   {
+  	if(!$this->tank_auth->is_logged_in())
+			redirect('auth/login');
    $cid=$_GET['cid'];
    //echo $cid;
     $this->load->model('admin_model');
     $this->admin_model->status_change($cid,'-1');
     //$this->load->view('rahul/message.html'); ///temperory
    // $this->load->view('rahul/complaint_discription.html',$data);
+    echo('<h2> Status Updated Successfully. <a href ="http://localhost/SAG-portal-nitw/index.php/user_controller" > click here </a> to go back</h2>');
   }
 
 
@@ -246,6 +262,7 @@ function deleted()
 			redirect('auth/login');
 		$this->load->model('user_model');
 		$res['index'] = $this->user_model->get_grievances();
+		// $res['image'] = $this->user_model->get_images();
 		$this->load->view('upvote.html',$res);
 	
 	}
@@ -261,17 +278,19 @@ function deleted()
 		$this->load->model('user_model');
 		$res['index'] = $this->user_model->get_grievances();
 		$this->load->view('upvote.html',$res);
+	}
 
 function show_my_complaints()
 {
+	// echo('<h1>gsaknhv</h1>');
+	if(!$this->tank_auth->is_logged_in())
+			redirect('auth/login');
   $id=$this->tank_auth->get_user_id();
-  $this->load->model('admin_model');
-  $data['det']=$this->admin_model->show_my_complaints($id);
-  //echo $data['no_of_c'];
+  $this->load->model('user_model');
+  $data['det']=$this->user_model->show_my_complaints($id);
+  // echo $data['no_of_c'];
   $this->load->view('rahul/my_complaints.html',$data);//temperory..... new view required here...done (Y) :)
 }
 
-
-	}
 
 }

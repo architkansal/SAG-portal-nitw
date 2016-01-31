@@ -53,21 +53,45 @@ class user_model extends CI_Controller
   function reg_grievance($insert_data=NULL)
   {
     
-    $data['user_id'] = $this->tank_auth->get_user_id();
-    $data['hostel'] =$this->input->post('dropdown1');
-    $data['floor'] =$this->input->post('dropdown2');
-    $data['tag'] =$this->input->post('dropdown3');
-    $data['details']=$this->input->post('description');
-    $this->db->insert('grievances',$data);
+    // $data['user_id'] = $this->tank_auth->get_user_id();
+    // $data['hostel'] =$this->input->post('dropdown1');
+    // $data['floor'] =$this->input->post('dropdown2');
+    // $data['tag'] =$this->input->post('dropdown3');
+    // $data['details']=$this->input->post('description');
+    // $this->db->insert('grievances',$data);
     if($insert_data!=NULL)
     {
 
-      $gid=$this->db->insert_id();
+      // $gid=$this->db->insert_id();
       // $data1['hcdid']=$_GET['hcdid'];
       // $data1['details']=$this->input->post('description');
       // 'name' => $image_data['file_name'],
-      $insert_data['gid']= $gid;
-      $this->db->insert('imgtable', $insert_data);
+      // $insert_data['gid']= $gid;
+
+
+      $data['user_id'] = $this->tank_auth->get_user_id();
+      $data['hostel'] =$this->input->post('dropdown1');
+      $data['floor'] =$this->input->post('dropdown2');
+      $data['tag'] =$this->input->post('dropdown3');
+      $data['details']=$this->input->post('description');
+      $data['name'] = $insert_data['name'];
+      $data['path'] = $insert_data['path'];
+      $this->db->insert('grievances',$data);
+
+
+      // $this->db->insert('imgtable', $insert_data);
+    }
+
+    else
+    {
+
+      $data['user_id'] = $this->tank_auth->get_user_id();
+      $data['hostel'] =$this->input->post('dropdown1');
+      $data['floor'] =$this->input->post('dropdown2');
+      $data['tag'] =$this->input->post('dropdown3');
+      $data['details']=$this->input->post('description');
+      $this->db->insert('grievances',$data);
+
     }
     
   }
@@ -75,12 +99,11 @@ class user_model extends CI_Controller
   function get_grievances()
   {
 
-      $this ->db-> select('*')->from('grievances')->join('imgtable' , 'grievances.gid=imgtable.gid')
+      $this ->db-> select('*')->from('grievances')//->join('imgtable' , 'grievances.gid=imgtable.gid')
       ->where('status' , '0');
       $grp=$this->db->get();
       $res=$grp->result_array();
       $res2=$grp->result();
-
       // print_r($res);
       $delimiter=",";
       $newline="\r\n";
@@ -88,6 +111,8 @@ class user_model extends CI_Controller
 
       return $res;
   }
+
+
 
   function inc_upvotes($gid)
   {
@@ -185,5 +210,20 @@ class user_model extends CI_Controller
 
 
   }
+
+   function show_my_complaints($id)
+   {
+    $this->db->select('cid,date,hcdid,preftime,details,status')
+             ->from('complaint')
+             ->where('user_id',$id);
+    $query=$this->db->get();
+    $query1=$query->result_array();
+  //   if(empty($query->result()))
+  //   $query1['no_of_c']=0;
+  // else
+  //   $query1['no_of_c']=1;
+    //print_r($query->result_array());
+    return($query1);
+   }
 
 }

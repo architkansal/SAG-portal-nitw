@@ -163,8 +163,10 @@ div.vertical-line{
         <?php  $path=$key["name"] ;?>
 
         <!-- // echo img('uploads/'.$pat);     "                      -->
-        <?php if($path!=0) ?>
-          <img src="<?php echo base_url('/uploads/'.$path)?>" > </img>                                      
+        <?php if(!is_null($path)): ?>
+         
+          <img src="<?php echo base_url('/uploads/'.$path)?>" > </img>  
+          <?php endif; ?>                                
          <!-- $votes=$key["upvotes"]; -->
         </p>
       

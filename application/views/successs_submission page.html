@@ -23,12 +23,15 @@
 }
     
 	</style>
+
+
+	<?php header( "refresh:2;url=http://localhost/SAG-portal-nitw/index.php/user_controller" );?>
 </head>
 <body>
 	<div class="contqainer">
 	<center>
 		<div class="image">
-			<img src="file:///opt/lampp/htdocs/SAG-portal-nitw/correct.jpg" alt="HTML5 Icon" width="530px" height="610px">
+			<img src="<?php echo base_url('/correct.jpg');?>" alt="HTML5 Icon" width="530px" height="610px">
 		</div>
 		<h1>Your complaint has been successfully Registered</h1>
 
