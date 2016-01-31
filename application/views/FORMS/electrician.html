@@ -55,7 +55,7 @@
 </br>
             <form action="submit_complaint?hcdid=11" name="feedback" id="feedback" method="post">
                 <div class="field">
-                    <input name="name" placeholder="Your name" type="text" id="name" required />
+                    <input name="sname" placeholder="Your name" type="text" id="name" required />
                     <span class="entypo-star icon"></span>
                     <span class="slick-tip left">Enter your name</span>
                 </div>
@@ -76,7 +76,7 @@
                 </div>
                 <!-- Subject input -->
                 <div class="field">
-                    <select name="subject" id="subject" class="grayed" onClick="this.className=this.options[this.selectedIndex].className">
+                    <select name="dropdown" id="subject" class="grayed" onClick="this.className=this.options[this.selectedIndex].className">
                         <option value="" disabled="disabled" selected="selected" class="disabled">Complaints</option>
                         <option value="11001">1.Fans stopped working </option>
                         <option value="11002">2.Tubes/Bulbs problem</option>
@@ -91,34 +91,29 @@
                 
                 <!-- Message input -->
                 <div class="field">
-                    <textarea name="message" placeholder="Describe problem" id="message" ></textarea>
+                    <textarea name="details" placeholder="Describe problem" id="message" ></textarea>
                     <span class="entypo-list icon"></span>
                     <span class="slick-tip left">Describe your problem</span>
                 </div>
-                <!-- Block checboxes -->
-                <div class="field">
-                    <p class="ratings"><span class="entypo-info-circled"></span>Please provide preferred time</p>
-                    <fieldset class="blocks" id="time">
-                        <!-- 18 - 25 -->
-                        <input type="radio" id="t1" name="time" value="9-11 am" />
-                        <label for="age-1">9-11am</label>
-                        <!-- 25 - 35 -->
-                        <input type="radio" id="t2" name="time" value="11am-1pm" />
-                        <label for="age-2">11am-1pm</label>
-                        <!-- 35 - 45 -->
-                        <input type="radio" id="t3" name="time" value="1-3pm" />
-                        <label for="age-3">1-3pm</label>
-                        <!-- 45 - 60 -->
-                        <input type="radio" id="t4" name="time" value="3-5pm" />
-                        <label for="age-4">3-5pm</label>
-                        <!-- 65 - 75 -->
-                        <input type="radio" id="t5" name="time" value="5-7pm" />
-                        <label for="age-5">5-7pm</label>
-                        <!-- 75 - 90 -->
-                        <input type="radio" id="t6" name="time" value="7-9pm" />
-                        <label for="age-6">7-9pm</label>
-                    </fieldset>
+                
+
+                 <div class="field">
+                    <input name="time" placeholder="prefred time" type="time"   required />
+                    <span class="entypo-mail icon"></span>
+                    <span class="slick-tip left">Preferred Time</span>
+                 
+                     
                 </div>
+
+
+
+
+
+
+
+
+               
+               
                 
                 <div class="clrfx mt-10 mb-20 bt"></div>
                 

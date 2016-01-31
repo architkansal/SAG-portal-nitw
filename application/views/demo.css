@@ -5,7 +5,7 @@
 body {
 	background-size: cover;
     background-attachment: fixed;
-    background-image: url("file:///opt/lampp/htdocs/SAG-portal-nitw/666.jpg");
+    background-image: url("http://localhost/SAG-portal-nitw/666.jpg");
     background-position: center center;
 }
 #page,

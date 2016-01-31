@@ -18,13 +18,14 @@ class user_model extends CI_Controller
     $data['user_id'] = $this->tank_auth->get_user_id();
     
     $data['hostel'] =$this->input->post('hostel');
-    $data['room'] =$this->input->post('room_no');
+    $data['room'] =$this->input->post('room');
     $data['mobile'] =$this->input->post('contact');
-    $data['preftime'] =$this->input->post('usr_time');
     $data['hcdid']=$_GET['hcdid'];
     $data['status']=0;
-    $data['details']=$this->input->post('description');
+    $data['details']=$this->input->post('details');
     $data['tag_id']= $this->input->post('dropdown');
+    $data['preftime'] =$this->input->post('time');
+    print_r($data);
     $this->db->insert('complaint',$data);
     
    

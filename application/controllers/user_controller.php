@@ -16,13 +16,14 @@ class user_controller extends CI_Controller
 		if($this->tank_auth->is_logged_in())
 		{
 			$this->load->model('user_model');
+			// $this->load->model('admin_model');
 			$group_id=$this->user_model->group_id();
 			if($group_id==0)
-				$this->load->view('FORMS/lan.html');
+				$this->load->view('rahul/login.html');
 			else if($group_id==1)
 			{
-				$stats=$this->statistics();
-				$this->load->view('slidemenu.html',$stats);
+				// $stats=$this->statistics();
+				$this->load->view('slidemenu.html');//,$stats);
 			}
 				
 			else if($group_id==2)
@@ -45,8 +46,11 @@ class user_controller extends CI_Controller
 
 	function statistics()
 	{
-		$this->load->model('admin_model');
-		$stats=$this->admin_model->statistics();
+		// echo('dummy 1');
+		$test = $this->load->model('admin_model');
+		// echo('dummy 2');
+		$stats=$test->statistics();
+		print_r($stats);
 		return $stats;
 	}
 
@@ -57,17 +61,17 @@ class user_controller extends CI_Controller
 
 	function carpenter()
 	{
-		$this->load->view('rahul/carpenter.html');
+		$this->load->view('FORMS/carpenter.html');
 	}
 
 	function plumber()
 	{
-		$this->load->view('rahul/plumber.html');
+		$this->load->view('FORMS/plumber.html');
 	}
 
 	function lan()
 	{
-		$this->load->view('rahul/lan.html');
+		$this->load->view('FORMS/lan.html');
 	}
 
 	function hostelg()
@@ -157,14 +161,6 @@ class user_controller extends CI_Controller
   }
 
 
-/*  function submit_grievance()   ///complaint form submit
-	{
-		$this->load->model('user_model');
-		$gid = $this->user_model->reg_grievance();
-
-		$this->complaint_reg_success();
-	}
-*/
 	function do_upload()
 	{
 		$config['upload_path'] = './uploads/';
@@ -203,6 +199,7 @@ class user_controller extends CI_Controller
                      );
 			$this->load->model('user_model');
 			$this->user_model->reg_grievance($insert_data);
+			$this->complaint_reg_success();
 			// $this->load->view('upload_success', $data);
 			// $this->complaint_reg_success();
 		}
@@ -211,17 +208,17 @@ class user_controller extends CI_Controller
 
   function show_c_details()
   {
-  	if(!$this->tank_auth->is_logged_in())
-			redirect('auth/login');
-  	$cid=$_GET['cid'];
-  	//echo $cid;
-  	$id=$this->tank_auth->get_user_id();
-  	$this->load->model('admin_model');
-  	 $data['inf']=$this->admin_model->get_c_details($cid);
-  	 $data['user_grp']=$this->admin_model->get_user_grp($id);
-     $this->load->view('rahul/complaint_discription.html',$data);
-     $data['query']=$this->admin_model->get_report($cid);
-     $this->load->view('rahul/complaint_report.html',$data);
+	  	if(!$this->tank_auth->is_logged_in())
+				redirect('auth/login');
+	  	$cid=$_GET['cid'];
+	  	//echo $cid;
+	  	$id=$this->tank_auth->get_user_id();
+	  	$this->load->model('admin_model');
+	  	 $data['inf']=$this->admin_model->get_c_details($cid);
+	  	 $data['user_grp']=$this->admin_model->get_user_grp($id);
+	     $this->load->view('rahul/complaint_discription.html',$data);
+	     $data['query']=$this->admin_model->get_report($cid);
+	     $this->load->view('rahul/complaint_report.html',$data);
 
      
   }
@@ -251,9 +248,9 @@ class user_controller extends CI_Controller
     echo('<h2> Status Updated Successfully. <a href ="http://localhost/SAG-portal-nitw/index.php/user_controller" > click here </a> to go back</h2>');
     //$this->load->view('rahul/message.html'); ///temperory
    // $this->load->view('rahul/complaint_discription.html',$data);
-}
+	}
 
-function deleted()
+	function deleted()
   {
   	if(!$this->tank_auth->is_logged_in())
 			redirect('auth/login');
@@ -294,17 +291,17 @@ function deleted()
 		$this->load->view('upvote.html',$res);
 	}
 
-function show_my_complaints()
-{
-	// echo('<h1>gsaknhv</h1>');
-	if(!$this->tank_auth->is_logged_in())
-			redirect('auth/login');
-  $id=$this->tank_auth->get_user_id();
-  $this->load->model('user_model');
-  $data['det']=$this->user_model->show_my_complaints($id);
-  // echo $data['no_of_c'];
-  $this->load->view('rahul/my_complaints.html',$data);//temperory..... new view required here...done (Y) :)
-}
+	function show_my_complaints()
+	{
+		// echo('<h1>gsaknhv</h1>');
+		if(!$this->tank_auth->is_logged_in())
+				redirect('auth/login');
+	  $id=$this->tank_auth->get_user_id();
+	  $this->load->model('user_model');
+	  $data['det']=$this->user_model->show_my_complaints($id);
+	  // echo $data['no_of_c'];
+	  $this->load->view('rahul/my_complaints.html',$data);//temperory..... new view required here...done (Y) :)
+	}
 
 
 }

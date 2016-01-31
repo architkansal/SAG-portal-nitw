@@ -40,7 +40,10 @@ class Admin_model extends CI_Controller
     $this->db->from('complaint');
     $this->db->join('users','users.id=complaint.user_id');
     $this->db->where('complaint.hcdid',$hcdid);
-    $this->db->where('complaint.status',!$q);
+    $this->db->where('complaint.status',0);
+    $this->db->or_where('complaint.status',-1);
+    $this->db->or_where('complaint.status',2);
+    
     $grp=$this->db->get();
     $res=$grp->result_array();
     //print_r($res);
@@ -99,6 +102,7 @@ class Admin_model extends CI_Controller
 
    function statistics()//currently working
    {
+    // echo('Dummy 3');
     $this->db->select('time_stamp,ts_details')
              ->from('cupdates')
              ->where('cid',$cid);
