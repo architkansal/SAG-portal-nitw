@@ -97,6 +97,16 @@ class Admin_model extends CI_Controller
     return($query->result_array());
    }
 
+   function statistics()//currently working
+   {
+    $this->db->select('time_stamp,ts_details')
+             ->from('cupdates')
+             ->where('cid',$cid);
+             
+    $query=$this->db->get();
+    return($query->result_array());
+   }
+
  function get_user_grp($id)
    {
     $this->db->select('user_group_id')

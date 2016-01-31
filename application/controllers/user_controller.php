@@ -9,7 +9,6 @@ class user_controller extends CI_Controller
 		// $this->load->helper('url');
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('tank_auth');
-		$this->load->dbutil();
 	}
 
 	function index()
@@ -21,7 +20,11 @@ class user_controller extends CI_Controller
 			if($group_id==0)
 				$this->load->view('rahul/login.html');
 			else if($group_id==1)
-				$this->load->view('slidemenu.html');
+			{
+				$stats=$this->statistics();
+				$this->load->view('slidemenu.html',$stats);
+			}
+				
 			else if($group_id==2)
 				$this->load->view('slidemenu.html');
 			else if($group_id==11)
@@ -40,9 +43,16 @@ class user_controller extends CI_Controller
 	
 	}
 
+	function statistics()
+	{
+		$this->load->model('admin_model');
+		$stats=$this->admin_model->statistics();
+		return $stats;
+	}
+
 	function electrician()
 	{
-		$this->load->view('rahul/electrician.html');
+		$this->load->view('FORMS/electrician.html');
 	}
 
 	function carpenter()
@@ -174,7 +184,11 @@ class user_controller extends CI_Controller
 		{
 			$data = array('upload_data' => $this->upload->data());
 
-			
+			// $this->load->view('upload_success', $data);
+			// print_r($data);
+			// echo('<h1>hii !!</h1>');
+			// var_dump($data);
+			// echo('<h1>hii !!</h1>');
 			// print($data['upload_data']['file_name']);
 			echo('<h1>done!!</h1>');
 						$insert_data = array(
@@ -189,7 +203,6 @@ class user_controller extends CI_Controller
 		}
 
 	}
-
 
   function show_c_details()
   {
@@ -238,30 +251,6 @@ function deleted()
   }
 
 
-	
-	function show_grievances()
-	{
-		// $this->load->view('upvote.html');
-		if(!$this->tank_auth->is_logged_in())
-			redirect('auth/login');
-		$this->load->model('user_model');
-		$res['index'] = $this->user_model->get_grievances();
-		$this->load->view('upvote.html',$res);
-	
-	}
-
-
-	function inc_upvotes()
-	{
-		if(!$this->tank_auth->is_logged_in())
-			redirect('auth/login');
-		$gid = $_GET["gid"];
-		$this->load->model('user_model');
-		$this->user_model->inc_upvotes($gid);
-		$this->load->model('user_model');
-		$res['index'] = $this->user_model->get_grievances();
-		$this->load->view('upvote.html',$res);
-
 function show_my_complaints()
 {
   $id=$this->tank_auth->get_user_id();
@@ -272,6 +261,5 @@ function show_my_complaints()
 }
 
 
-	}
 
 }
