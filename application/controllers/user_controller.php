@@ -29,13 +29,29 @@ class user_controller extends CI_Controller
 			else if($group_id==2)
 				$this->load->view('slidemenu.html');
 			else if($group_id==11)
-				$this->load->view('rahul/elec-admin.html');
+			{
+				$arr['det'] = $this->fetch_complaints($group_id);
+				$this->load->view('rahul/elec-admin.html',$arr);
+			}
+				
 			else if($group_id==44)
-				$this->load->view('rahul/carpenter_admin.html');
+			{
+				$arr['det'] = $this->fetch_complaints($group_id);
+				$this->load->view('rahul/carpenter_admin.html',$arr);
+			}
+				
 			else if($group_id==33)
-				$this->load->view('rahul/lan_admin');
+			{
+				$arr['det'] = $this->fetch_complaints($group_id);
+				$this->load->view('rahul/lan_admin.html',$arr);
+			}
+				
 			else if($group_id==22)
-				$this->load->view('rahul/plumber_admin.html');
+			{
+				$arr['det'] = $this->fetch_complaints($group_id);
+				$this->load->view('rahul/plumber_admin.html',$arr);
+			}
+				
 		}
 		else
 	 	{
@@ -43,6 +59,11 @@ class user_controller extends CI_Controller
 		}
 	
 	}
+
+	// function ele_func($hcdid)
+	// {
+
+	// }
 
 	function statistics()
 	{
@@ -155,10 +176,11 @@ class user_controller extends CI_Controller
   {
   	if(!$this->tank_auth->is_logged_in())
 			redirect('auth/login');
-    $this->load->model('admin_model');
-    $res=$this->admin_model->get_complaints($hcdid);
+    $this->load->model('user_model');
+    $res=$this->user_model->get_complaints($hcdid);
     return $res;
   }
+
 
 
 	function do_upload()
@@ -213,15 +235,32 @@ class user_controller extends CI_Controller
 	  	$cid=$_GET['cid'];
 	  	//echo $cid;
 	  	$id=$this->tank_auth->get_user_id();
-	  	$this->load->model('admin_model');
-	  	 $data['inf']=$this->admin_model->get_c_details($cid);
-	  	 $data['user_grp']=$this->admin_model->get_user_grp($id);
+	  	$this->load->model('user_model');
+	  	 $data['inf']=$this->user_model->get_c_details($cid);
+	  	 $data['user_grp']=$this->user_model->get_user_grp($id);
 	     $this->load->view('rahul/complaint_discription.html',$data);
-	     $data['query']=$this->admin_model->get_report($cid);
+	     $data['query']=$this->user_model->get_report($cid);
 	     $this->load->view('rahul/complaint_report.html',$data);
 
      
   }
+    function show_ad_c_details()
+  {
+	  	if(!$this->tank_auth->is_logged_in())
+				redirect('auth/login');
+	  	$cid=$_GET['cid'];
+	  	//echo $cid;
+	  	$id=$this->tank_auth->get_user_id();
+	  	$this->load->model('user_model');
+	  	 $data['inf']=$this->user_model->get_c_details($cid);
+	  	 $data['user_grp']=$this->user_model->get_user_grp($id);
+	     $this->load->view('rahul/complaint_discription.html',$data);
+	     $data['query']=$this->user_model->get_report($cid);
+	     $this->load->view('rahul/complaint_report.html',$data);
+
+     
+  }
+
 
 
   function resolved()

@@ -51,6 +51,25 @@ class user_model extends CI_Controller
 
     
 
+  function get_complaints($hcdid) 
+  {
+    $q=1;
+    // echo($hcdid);
+    $this->db->select('complaint.user_id,complaint.cid,complaint.status,users.name,users.contact');
+    $this->db->from('complaint');
+    $this->db->join('users','users.id=complaint.user_id');
+    $this->db->where('complaint.hcdid',$hcdid);
+    $this->db->where('complaint.status',0);
+    $this->db->or_where('complaint.status',-1);
+    $this->db->or_where('complaint.status',2);
+    
+    $grp=$this->db->get();
+    $res=$grp->result_array();
+    //print_r($res);
+     return $res;
+
+  }
+
   function reg_grievance($insert_data=NULL)
   {
     
@@ -113,7 +132,25 @@ class user_model extends CI_Controller
       return $res;
   }
 
+   function get_user_grp($id)
+   {
+    $this->db->select('user_group_id')
+             ->from('users')
+             ->where('id',$id);
+             
+    $query=$this->db->get();
+    return($query->result_array());
+   }
 
+    function get_report($cid)
+   {
+    $this->db->select('time_stamp,ts_details')
+             ->from('cupdates')
+             ->where('cid',$cid);
+             
+    $query=$this->db->get();
+    return($query->result_array());
+   }
 
   function inc_upvotes($gid)
   {
@@ -226,5 +263,16 @@ class user_model extends CI_Controller
     //print_r($query->result_array());
     return($query1);
    }
+
+   function get_c_details($cid)
+  {
+    //echo $cid;
+    $this->db->select('cid,user_id,date,hcdid,preftime,room,hostel,mobile,details,status')
+             ->from('complaint')
+             ->where('cid',$cid);
+    $query=$this->db->get();
+    //print_r($query->result_array());
+    return($query->result_array());
+  }
 
 }

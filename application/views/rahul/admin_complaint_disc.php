@@ -67,7 +67,7 @@ h3{
 	    </br>
 
         </br>
-      
+        
         <?php if($inf[0]['status']!=1 AND $user_grp[0]['user_group_id']!=0  ): ?>
         <a href="resolved?cid=<?php echo $inf[0]['cid']; ?>">
          <div class="card card-inverse card-danger text-xs-center">
@@ -113,4 +113,4 @@ h3{
   
 </div>
 </body>
-</html>
+</html5

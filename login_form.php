@@ -89,4 +89,3 @@ $captcha = array(
     
   </body>
 </html>
-

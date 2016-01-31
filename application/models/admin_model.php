@@ -35,7 +35,7 @@ class Admin_model extends CI_Controller
   function get_complaints($hcdid) 
   {
     $q=1;
-    
+    // echo($hcdid);
     $this->db->select('complaint.user_id,complaint.cid,complaint.status,users.name,users.contact');
     $this->db->from('complaint');
     $this->db->join('users','users.id=complaint.user_id');
