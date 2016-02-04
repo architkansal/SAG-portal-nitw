@@ -20,6 +20,8 @@ class Welcome extends CI_Controller
 			// $this->load->view('welcome', $data);
 			redirect('/user_controller');
 		}
+// 
+		// $this->load->view('upvote.html');
 	}
 }
 

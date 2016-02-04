@@ -14,17 +14,8 @@ class user_controller extends CI_Controller
 
 	function index()
 	{
-		if($this->tank_auth->is_logged_in())
-		{
-			echo('skjDFCGYF ');
-			
-			$this->load->view('FORMS/electrician.html');
-		}
-		else
-	 	{
-	 		echo('skjDFCGYF ');
-			redirect('/auth/login/');
-		}
+		
+		$this->load->view('upvote.html');
 	}
 
 }
