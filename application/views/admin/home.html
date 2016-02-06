@@ -1,0 +1,147 @@
+<html>
+<head>
+	<style>
+	h3
+	{
+	  color:white;
+	  text-decoration:none;
+	  font-family:"Times New Roman";
+	  text-align:justify;
+	  padding-left: 10%;
+	}
+	body {
+    /*background: url(http://localhost/SAG-portal-nitw/images.jpg);*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    }
+    #image
+    {
+    padding-top: 0px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+
+    }
+	ul#navigation {
+    position: fixed;
+    margin: 0px;
+    padding: 0px;
+    top: 10px;
+    left: 0px;
+    list-style: none;
+    z-index:9999;
+}
+	ul#navigation li a {
+    display: block;
+    margin-left: -100px;
+    width: 200px;
+    height: 60px;
+    background-color:#262626;
+    background-repeat:no-repeat;
+    background-position:center center;
+    border:1px solid #AFAFAF;
+    -moz-border-radius:0px 10px 10px 0px;
+    -webkit-border-bottom-right-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -khtml-border-bottom-right-radius: 10px;
+    -khtml-border-top-right-radius: 10px;
+    -moz-box-shadow: 0px 4px 3px #000;
+    -webkit-box-shadow: 0px 4px 3px #000;
+}
+ul#navigation .electricity a{
+    background-image: url(<?php echo base_url('assets/img/elect.png')?>);
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
+    background-position : 90% 55%;
+}
+ul#navigation .plumber a      {
+    background-image: url(<?php echo base_url('assets/img/plum.jpg')?>);
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
+    background-position : 90% 55%;
+}
+ul#navigation .carpenter a      {
+    background-image: url(<?php echo base_url('assets/img/carpenter.jpg')?>);
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
+    background-position : 90% 55%;
+}
+ul#navigation .lan a      {
+    background-image: url(<?php echo base_url('assets/img/lan.jpg')?>);
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
+    background-position : 90% 55%;
+}
+ul#navigation .mess a   {
+    background-image: url(<?php echo base_url('assets/img/mess.png')?>);
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
+    background-position : 90% 55%;
+}
+ul#navigation .hostel a     {
+    background-image: url(<?php echo base_url('assets/img/hostel.png')?>);
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
+    background-position : 90% 55%;
+}
+
+	</style>
+</head>
+<body>
+	
+	<ul id="navigation">
+
+ <li class="electricity">
+</br>
+</br>
+</br>
+</br></br></br>
+</br>
+<a href='<?php echo base_url("index.php/user_controller/show_details?p=1");?>'><h3>Electricity</h3></a></li>
+</br>
+ <li class="plumber"><a href='<?php echo base_url("index.php/user_controller/show_details?p=3");?>'><h3>Plumber</h3></a> </li>
+</br>
+ <li class="carpenter"><a href='<?php echo base_url("index.php/user_controller/show_details?p=2");?>'><h3>Carpenter</h3></a></li>
+</br>
+ <li class="lan"><a href='<?php echo base_url("index.php/user_controller/show_details?p=4");?>'><h3>LAN</h3></a></li>
+</br>
+ <li class="mess"><a href='<?php echo base_url("index.php/user_controller/show_details?p=6");?>'><h3>Mess</h3></a></li>
+</br>
+ <li class="hostel"><a href='<?php echo base_url("index.php/user_controller/show_details?p=5");?>'><h3>Hostel</h3></a></li>
+</br>
+</ul>
+<script type="text/javascript">
+$(function() {
+
+ $('#navigation a').stop().animate({'marginLeft':'-130px'},1000);
+
+ $('#navigation > li').hover
+ (
+  function () 
+  {$('a',$(this)).stop().animate({'marginLeft':'-1px'},200);},
+  function () 
+  {$('a',$(this)).stop().animate({'marginLeft':'-130px'},200);}
+ );
+});
+</script>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+
+</body>
+</html>

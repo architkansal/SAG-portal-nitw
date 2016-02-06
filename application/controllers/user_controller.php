@@ -19,37 +19,53 @@ class user_controller extends CI_Controller
 			// $this->load->model('admin_model');
 			$group_id=$this->user_model->group_id();
 			if($group_id==0)
-				$this->load->view('rahul/login.html');
+			{
+				$this->load->view('templates/header.html');
+				$this->load->view('user/home.html');
+				$this->load->view('templates/footer.html');
+			}
 			else if($group_id==1)
 			{
-				// $stats=$this->statistics();
-				$this->load->view('slidemenu.html');//,$stats);
+				$this->load->view('templates/header.html');
+				$this->load->view('admin/home.html');
+				$this->load->view('templates/footer.html');
 			}
-				
 			else if($group_id==2)
-				$this->load->view('slidemenu.html');
+			{
+				$this->load->view('templates/header.html');
+				$this->load->view('admin/home.html');
+				$this->load->view('templates/footer.html');
+			}
 			else if($group_id==11)
 			{
 				$arr['det'] = $this->fetch_complaints($group_id);
-				$this->load->view('rahul/elec-admin.html',$arr);
+				$this->load->view('templates/header.html');
+				$this->load->view('admin/elec_admin.html',$arr);
+				$this->load->view('templates/footer.html');
 			}
 				
 			else if($group_id==44)
 			{
 				$arr['det'] = $this->fetch_complaints($group_id);
-				$this->load->view('rahul/carpenter_admin.html',$arr);
+				$this->load->view('templates/header.html');
+				$this->load->view('admin/carpenter_admin.html',$arr);
+				$this->load->view('templates/footer.html');
 			}
 				
 			else if($group_id==33)
 			{
 				$arr['det'] = $this->fetch_complaints($group_id);
-				$this->load->view('rahul/lan_admin.html',$arr);
+				$this->load->view('templates/header.html');
+				$this->load->view('admin/lan_admin.html',$arr);
+				$this->load->view('templates/footer.html');
 			}
 				
 			else if($group_id==22)
 			{
 				$arr['det'] = $this->fetch_complaints($group_id);
-				$this->load->view('rahul/plumber_admin.html',$arr);
+				$this->load->view('templates/header.html');
+				$this->load->view('admin/plumber_admin.html',$arr);
+				$this->load->view('templates/footer.html');
 			}
 				
 		}
@@ -65,7 +81,7 @@ class user_controller extends CI_Controller
 
 	// }
 
-	function statistics()
+	function statistics()// not working !!!!!!!!!!!!!!
 	{
 		// echo('dummy 1');
 		$test = $this->load->model('admin_model');
@@ -77,32 +93,32 @@ class user_controller extends CI_Controller
 
 	function electrician()
 	{
-		$this->load->view('FORMS/electrician.html');
+		$this->load->view('user/electrician.html');
 	}
 
 	function carpenter()
 	{
-		$this->load->view('FORMS/carpenter.html');
+		$this->load->view('user/carpenter.html');
 	}
 
 	function plumber()
 	{
-		$this->load->view('FORMS/plumber.html');
+		$this->load->view('user/plumber.html');
 	}
 
 	function lan()
 	{
-		$this->load->view('FORMS/lan.html');
+		$this->load->view('user/lan.html');
 	}
 
 	function hostelg()
 	{
-		$this->load->view('rahul/hostelg.html');
+		$this->load->view('user/hostelg.html');
 	}
 
 	function messg()
 	{
-		$this->load->view('rahul/messg.html');
+		$this->load->view('user/messg.html');
 	}
 
 	function submit_complaint()   ///complaint form submit
@@ -128,22 +144,27 @@ class user_controller extends CI_Controller
   	{
   		$hcdid='11';
   	    $arr['det']= $this->fetch_complaints($hcdid);
-  		$this->load->view('rahul/elec-admin.html',$arr);
+  		$this->load->view('templates/header.html');
+		$this->load->view('admin/elec_admin.html',$arr);
+		$this->load->view('templates/footer.html');
   	}
     
 	else if($q==2)
 	{
 		$hcdid='22';
 		$arr['det']= $this->fetch_complaints($hcdid);
-		$this->load->view('rahul/plumber_admin.html',$arr);
+		$this->load->view('templates/header.html');
+		$this->load->view('admin/carpenter_admin.html',$arr);
+		$this->load->view('templates/footer.html');
 	}
 	
 	else if($q==3)
 	{
 		$hcdid='33';
 		$arr['det']= $this->fetch_complaints($hcdid);
-
-		$this->load->view('rahul/lan_admin.html',$arr);
+		$this->load->view('templates/header.html');
+		$this->load->view('admin/plumber_admin.html',$arr);
+		$this->load->view('templates/footer.html');
 	}
 
 	
@@ -151,21 +172,27 @@ class user_controller extends CI_Controller
 	{
 		$hcdid='44';
 		$arr['det']= $this->fetch_complaints($hcdid);
-		$this->load->view('rahul/carpenter_admin.html',$arr);
+		$this->load->view('templates/header.html');
+		$this->load->view('admin/lan_admin.html',$arr);
+		$this->load->view('templates/footer.html');
 	}
 	
 	else if($q==5)
 	{
 		$hcdid='55';
 		$arr['det']= $this->fetch_complaints($hcdid);
-		$this->load->view('rahul/hostelg_admin.html',$arr);
+		$this->load->view('templates/header.html');
+		$this->load->view('admin/hostelg_admin.html',$arr);
+		$this->load->view('templates/footer.html');
 	}
 	
 	else if($q==6)
 	{
 		$hcdid='66';
 		$arr['det']= $this->fetch_complaints($hcdid);
-		$this->load->view('rahul/messg_admin.html',$arr);
+		$this->load->view('templates/header.html');
+		$this->load->view('admin/messg_admin.html',$arr);
+		$this->load->view('templates/footer.html');
 	}
 	
  
@@ -238,10 +265,11 @@ class user_controller extends CI_Controller
 	  	$this->load->model('user_model');
 	  	 $data['inf']=$this->user_model->get_c_details($cid);
 	  	 $data['user_grp']=$this->user_model->get_user_grp($id);
-	     $this->load->view('rahul/complaint_discription.html',$data);
+	  	 $this->load->view('templates/header.html');
+	     $this->load->view('user/complaint_description.html',$data);
 	     $data['query']=$this->user_model->get_report($cid);
-	     $this->load->view('rahul/complaint_report.html',$data);
-
+	     $this->load->view('user/complaint_report.html',$data);
+	     $this->load->view('templates/footer.html');
      
   }
     function show_ad_c_details()
@@ -254,10 +282,11 @@ class user_controller extends CI_Controller
 	  	$this->load->model('user_model');
 	  	 $data['inf']=$this->user_model->get_c_details($cid);
 	  	 $data['user_grp']=$this->user_model->get_user_grp($id);
-	     $this->load->view('rahul/complaint_discription.html',$data);
+	  	 $this->load->view('templates/header.html');
+	     $this->load->view('admin/complaint_description.html',$data);
 	     $data['query']=$this->user_model->get_report($cid);
-	     $this->load->view('rahul/complaint_report.html',$data);
-
+	     $this->load->view('admin/complaint_report.html',$data);
+	     $this->load->view('templates/footer.html');
      
   }
 
@@ -313,8 +342,10 @@ class user_controller extends CI_Controller
 		$this->load->model('user_model');
 		$res['index'] = $this->user_model->get_grievances();
 		// $res['image'] = $this->user_model->get_images();
-		$this->load->view('upvote.html',$res);
-	
+		// $this->load->view('upvote.html',$res);
+		$this->load->view('templates/header.html');
+		$this->load->view('user/timeline.html',$res);
+		$this->load->view('templates/footer.html');
 	}
 
 
@@ -327,7 +358,10 @@ class user_controller extends CI_Controller
 		$this->user_model->inc_upvotes($gid);
 		$this->load->model('user_model');
 		$res['index'] = $this->user_model->get_grievances();
-		$this->load->view('upvote.html',$res);
+		// $this->load->view('upvote.html',$res);
+		$this->load->view('templates/header.html');
+		$this->load->view('user/timeline.html',$res);
+		$this->load->view('templates/footer.html');
 	}
 
 	function show_my_complaints()
@@ -339,8 +373,94 @@ class user_controller extends CI_Controller
 	  $this->load->model('user_model');
 	  $data['det']=$this->user_model->show_my_complaints($id);
 	  // echo $data['no_of_c'];
-	  $this->load->view('rahul/my_complaints.html',$data);//temperory..... new view required here...done (Y) :)
+	  $this->load->view('templates/header.html');
+	  $this->load->view('user/my_complaints.html',$data);
+	  $this->load->view('templates/footer.html');
 	}
+
+	function time_line()
+	{
+
+		if(!$this->tank_auth->is_logged_in())
+			redirect('auth/login');
+		$this->load->model('user_model');
+		$res['index'] = $this->user_model->get_grievances();
+		$this->load->view('templates/header.html');
+		$this->load->view('user/timeline.html',$res);
+		$this->load->view('templates/footer.html');
+	}
+
+
+	function table()
+	{
+		if(!$this->tank_auth->is_logged_in())
+				redirect('auth/login');
+		$this->load->view('table/table.html');
+	}
+
+
+	function all_problems()
+	{
+		if(!$this->tank_auth->is_logged_in())
+				redirect('auth/login');
+		$this->load->model('user_model');
+		$res['index'] = $this->user_model->get_all();
+		$this->load->view('templates/header.html');
+		$this->load->view('user/timeline.html',$res);
+		$this->load->view('templates/footer.html');
+	}
+
+
+	function elec_problems()
+	{
+		if(!$this->tank_auth->is_logged_in())
+				redirect('auth/login');
+		$this->load->model('user_model');
+		$res['index'] = $this->user_model->get_elec();
+		$this->load->view('templates/header.html');
+		$this->load->view('user/timeline.html',$res);
+		$this->load->view('templates/footer.html');
+
+	}
+
+
+	function lan_problems()
+	{
+		if(!$this->tank_auth->is_logged_in())
+				redirect('auth/login');
+		$this->load->model('user_model');
+		$res['index'] = $this->user_model->get_lan();
+		$this->load->view('templates/header.html');
+		$this->load->view('user/timeline.html',$res);
+		$this->load->view('templates/footer.html');
+
+	}
+
+
+	function car_problems()
+	{
+		if(!$this->tank_auth->is_logged_in())
+				redirect('auth/login');
+		$this->load->model('user_model');
+		$res['index'] = $this->user_model->get_grievances();
+		$this->load->view('templates/header.html');
+		$this->load->view('user/timeline.html',$res);
+		$this->load->view('templates/footer.html');
+
+	}
+
+
+	function plum_problems()
+	{
+		if(!$this->tank_auth->is_logged_in())
+				redirect('auth/login');
+		$this->load->model('user_model');
+		$res['index'] = $this->user_model->get_grievances();
+		$this->load->view('templates/header.html');
+		$this->load->view('user/timeline.html',$res);
+		$this->load->view('templates/footer.html');
+	}
+
 
 
 }

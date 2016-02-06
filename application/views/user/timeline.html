@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Timeline</title>
+  <meta name="description" content="Blueprint: Vertical Timeline" />
+  <meta name="keywords" content="timeline, vertical, layout, style, component, web development, template, responsive" />
+  <meta name="author" content="Codrops" />
+  <!-- <link rel="shortcut icon" href="../favicon.ico"> -->
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/VerticalTimeline/css/default.css')?>" />
+  <link rel="stylesheet" type="text/css"  href="<?php echo base_url('assets/VerticalTimeline/css/component.css')?>" />
+  <link rel="stylesheet" type="text/css"  href="<?php echo base_url('assets/bootstrap.css')?>" />
+
+  <script src="<?php echo base_url('assets/VerticalTimeline/js/modernizr.custom.js')?>"></script>
+
+<!-- 
+  <style>
+  .btn {
+    /*background-color: #4CAF50;*/
+    /*border: none;*/
+    /*color: white;*/
+    /*border-radius: 5px;*/
+    /*padding: 8px;*/
+    /*text-align: center;*/
+    /*font-size: 16px;*/
+    /*cursor: pointer;*/
+    /*width: 100%;*/
+}
+
+  </style>
+ -->
+</head>
+
+
+<body>
+
+  <div class="container">
+    <div class="row">
+    <div class="col-md-3" >
+
+      <!-- <div class="row"> -->
+        
+          <a href="user_controller/all_problems">
+            <button   style ="width: 100%" class="btn btn-success btn-lg">All Problems</button>
+          </a>
+       
+        <br/>
+        <br/>
+        
+          <a href="user_controller/elec_problems">
+            <button style ="width: 100%" class="btn btn-success btn-lg">Electricity Problems</button>
+          </a>
+       
+        <br/>
+        <br/>
+        
+          <a href="user_controller/car_problems">
+            <button style ="width: 100%" class="btn btn-success btn-lg">Carpenter Problems</button>
+          </a>
+       
+        <br/>
+        <br/>
+
+       
+          <a href="user_controller/plum_problems">
+            <button style ="width: 100%" class="btn btn-success btn-lg">Plumber Problems</button>
+          </a>
+
+          <br/>
+          <br/>
+
+           <a href="user_controller/lan_problems">
+            <button style ="width: 100%" class="btn btn-success btn-lg">Lan Problems</button>
+          </a>
+       
+        <br/>
+        <br/>
+
+      <!-- </div> -->
+    </div>
+
+    <div class="col-md-9">
+
+      <div class="main">
+        <ul class="cbp_tmtimeline">
+
+            <?php foreach ($index as $key) : ?>
+
+             <li>
+            <div class="cbp_tmicon cbp_tmicon-phone"></div>
+            <div class="cbp_tmlabel">
+              <p>
+              <h4>   <?php echo $key["details"];  ?></h4> 
+              <?php  $path=$key["name"] ;?>
+
+              <!-- // echo img('uploads/'.$pat);     "                      -->
+              <?php if(!is_null($path)): ?>
+               
+                <img src="<?php echo base_url('/uploads/'.$path)?>" > </img>  
+                <?php endif; ?>                                
+               <!-- $votes=$key["upvotes"]; -->
+              </p>
+
+              <p>
+            </br>
+              <a href="<?php echo base_url('index.php/user_controller/inc_upvotes?gid='.$key["gid"])?> " class="btn btn-info btn-lg">
+                <span class="glyphicon glyphicon-thumbs-up" ></span> Upvote <?php echo $key["upvotes"]?>
+              </a>
+                    <a href="#" class="btn btn-danger btn-lg">
+                <span class="glyphicon glyphicon-align-justify"></span>
+                 <?php if($key['status']==0) 
+                            echo("Unresolved");
+                        elseif($key['status']==1)
+                            echo("Resolved");
+                        else
+                          echo("In Progress");
+                        ?>
+              </a>
+          </p>
+
+           </li>
+
+            <?php endforeach; ?> 
+
+
+
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>
+

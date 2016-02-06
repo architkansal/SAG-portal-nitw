@@ -1,0 +1,170 @@
+<html>
+<head>
+<title>SAG Portal</title>
+
+<!-- jQuery library -->
+
+<style>
+body {
+    /*background: url(http://localhost/SAG-portal-nitw/login.jpg);*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    }
+    #image
+    {
+    padding-top: 0px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+
+    }
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    padding: 8px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+}
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 280%;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 280%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+hr
+{
+   display: block;
+  margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 2px;
+}
+h2.one
+{
+  border-style: outset;
+  border-width : thick;
+}
+a.seconds
+{
+   display: inline-block;
+    background-color: #f44336;
+    color: white;
+    padding: 14px 25px;
+    text-align: center; 
+    text-decoration: none;
+    font-size: 30px;
+}
+
+</style>
+</head>
+<body>
+  
+  <div class = "seconds">
+  <div class="container">
+   <div class="row">
+   <div class="col-md-4">
+    
+    <div class="dropdown">
+  <button class="dropbtn">Hostel Services</button>
+  <div class="dropdown-content">
+    <a href="user_controller/electrician">Electricity problems</a>
+    <a href="user_controller/plumber">Plumber problems</a>
+    <a href="user_controller/lan">Lan problems</a>
+    <a href="user_controller/carpenter">Carpenter problems</a>
+  </div>
+</div>
+  <br>
+  <br/>
+  <br/>
+  <a href="user_controller/hostelg">
+    <button class="button">Hostel Grievances</button>
+  </a>
+<br>
+<br/>
+<br/>
+<a href="user_controller/messg">
+  <button class="button">Mess Grievances</button><br>
+</a>
+<br>
+<br/>
+<a href="user_controller/show_grievances">
+  <button class="button">Current Hostel Grievances</button><br>
+</a>
+
+  </div>
+
+
+  <div class="col-md-3"></div>
+  <div class="col-md-4">
+  <a href="user_controller/show_my_complaints">
+  <button class="button">SEE YOUR COMPLAINTS</button>
+  <br>
+  </a>
+  </div>
+  <br>
+<br/>
+<br/>
+   <div class="col-md-3"></div>
+  <div class="col-md-4">
+  <a href="user_controller/time_line">
+  <button class="button">Time Line</button>
+
+  <br>
+<br/>
+<br/>
+   <div class="col-md-3"></div>
+  <div class="col-md-4">
+  <a href="user_controller/table">
+  <button class="button">Table</button>
+  <br>
+  </a>
+  </div>
+
+
+      </div>
+       </div>
+    </div>
+  </br>
+</br>
+</br>
+</br>
+   
+</body>
+</html>
