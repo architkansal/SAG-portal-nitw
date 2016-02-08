@@ -461,6 +461,19 @@ class user_controller extends CI_Controller
 		$this->load->view('templates/footer.html');
 	}
 
+	function complaint_resolved()
+	{
+		// echo ("fjkqhwoi eklqgh ");
+		if(!$this->tank_auth->is_logged_in())
+			redirect('auth/login');
+	   $cid=$_POST['cid'];
+	    $this->load->model('admin_model');
+	    $this->admin_model->status_change($cid,'1');
+	    date_default_timezone_set('Asia/Kolkata');
+	     $tym = date('Y-m-d H:i:s');
+	     print($tym." The complaint is updated as resolved");
+
+	}
 
 
 }
