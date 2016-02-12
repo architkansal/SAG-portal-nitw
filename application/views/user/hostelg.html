@@ -1,165 +1,146 @@
-
-<!DOCTYPE html>
+<html>
 <head>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Hostel Problem</title>
-    <meta name="description" content="Slick &amp; clean CSS3 Forms Pack" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Forms stylesheet -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('/main1.css')?>" media="screen" />
-    <!-- / Forms stylesheet -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('/demo.css')?>" media="screen" />
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <!--[if IE 9]>
-        <script type="text/javascript" src="js/placeholder.js"></script>
-    <![endif]-->
-    <script type="text/javascript">
-        if(top != self) {
-            window.open(self.location.href, '_top');
-        }
-    </script>
-    <script type="text/javascript">
-        $(window).load(function() {
-            // Preloader
-            $("#switch").click(function() {
-              $(this).toggleClass("on");
-              $("#links").toggleClass("odprt zaprt");
-            });
-        });
-    </script>
+<title></title>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<style>
+body
+{
+ background: url('http://localhost/SAG-portal-nitw/666.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+form.first
+{
+    text-align: center;
+    border-radius: 5px;
+    background-color: #cccccc;
+    padding: 40px;
+}
+input[type=text], select {
+    width: 50%;
+    padding: 5px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=time], select {
+    width: 50%;
+    padding: 5px 20px;
+    margin: 6px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+</style>
 </head>
 <body>
+  <div class="container-fluid">
+<nav class="navbar navbar-inverse">
+    
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li style="font-size:25px"><a href="#">SAG Portal</a></li> 
+          <li><a href="http://localhost/SAG-portal-nitw/index.php/user_controller">Home</a></li>
+          <!--<li><a href="#">Contact us</a></li>-->
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="../auth/logout"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+          <!-- <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
+        </ul>
 
-
-<div class="row">
-<div class="col-md-5">
-</div>
+      </div>
+    </div>
+  </nav>
+  <div class="row">
 <div class="col-md-7">
-
-<div id="page-2">
-
-    <div class="clrfx-buy"></div>
-
-    <section id="slick">
-        
-        <div class="feedback-form">
-            <!-- Title -->
-            <div class="title">Register your complaint here</div> 
-            <br>
-        </br>
-    </br>
-</br>
-            <form action="submit_complaint?hcdid=22" name="feedback" id="feedback" method="post">
-                <div class="field">
-                    <input name="sname" placeholder="Your name" type="text" id="name" required />
-                    <span class="entypo-star icon"></span>
-                    <span class="slick-tip left">Enter your name</span>
-                </div>
-                <div class="field">
-                    <input name="hostel" placeholder="Hostel name" type="text" id="hostel" required />
-                    <span class="entypo-mobile icon"></span>
-                    <span class="slick-tip left">Enter your hostel</span>
-                </div>
-                <div class="field">
-                    <input name="room" placeholder="room number" type="text" id="room" required />
-                    <span class="entypo-mobile icon"></span>
-                    <span class="slick-tip left">Enter your room number</span>
-                </div>
-                <div class="field">
-                    <input name="contact" placeholder="contact number" type="number" id="hostel" required />
-                    <span class="entypo-mail icon"></span>
-                    <span class="slick-tip left">Enter your contact number</span>
-                </div>
-                <!-- Subject input -->
-                <div class="field">
-                    <select name="dropdown" id="subject" class="grayed" onClick="this.className=this.options[this.selectedIndex].className">
-                        <option value="" disabled="disabled" selected="selected" class="disabled">Complaints</option>
-                        <option value="22001">1.Water taps not working </option>
-                        <option value="22002">2.Pipelines blocked</option>
-                        <option value="22003">3.Water leakage from pipes</option>
-                          <option value="22004">4.others</option>
-                    </select>
-                    <div id="arrow-select"></div>
-                    <svg id="arrow-select-svg"></svg>
-                    <span class="entypo-menu icon"></span>
-                    <span class="slick-tip left">Choose complaint</span>
-                </div>
-                
-                <!-- Message input -->
-                <div class="field">
-                    <textarea name="details" placeholder="Describe problem" id="message" ></textarea>
-                    <span class="entypo-list icon"></span>
-                    <span class="slick-tip left">Describe your problem</span>
-                </div>
-                
-
-                 <div class="field">
-                    <input name="time" placeholder="prefred time" type="time"   required />
-                    <span class="entypo-mail icon"></span>
-                    <span class="slick-tip left">Preferred Time</span>
-                 
-                     
-                </div>
-
-
-
-
-
-
-
-
-               
-               
-                
-                <div class="clrfx mt-10 mb-20 bt"></div>
-                
-                <div class="clrfx mt-20"></div>
-                <!-- Terms and Conditions link -->
-                <div class="terms w-47">Your information won’t be disclosed.<br />Read our <a href="#terms-popup">Terms and Conditions</a>.</div>
-                <input type="submit" value="Send" class="send" form="feedback" name="send" />
-            </form>
-            <!-- / Form fields -->
-        </div>
-        <!-- / Feedback form -->
-        <!-- Terms and conditions -->
-        <div id="terms-popup" class="terms-window">
-            <a href="#close" class="close-overlay"></a>
-            <div>
-                <a href="#close" class="close entypo-cancel-circled"></a>
-                <div class="title">Terms &amp; Conditions</div>
-                <p class="intro" style=color:rgb(128,128,150)>
-                1. Describe your problem in least words possible( if its not mentioned in drop down)<br>
-                2. PLEASE enter a valid problem.<br>
-                3. Don't fill the form unnecessarily.<br>
-                4. Choose time at which you will be available in your room only.<br>
-                5. Provide  valid contact number only. </p>
-                
-            </div>
-        </div>
-        <!-- / Terms and conditions -->
-    </section>
-
-    <div class="clrfx-buy"></div>
-
 </div>
+<div class="col-md-5">
+<?php echo form_open_multipart('user_controller/do_upload');?>
+ <!-- <div class="row">
+       <div class="col-md-8"> -->
+       <h4>Select your Hostel</h4>
+
+       <select name="dropdown1">
+       <option value="Ultra mega" selected>Ultra mega</option>
+       <option value="Mega">Mega</option>
+       <option value="4th block">4th block</option>
+       <option value="6th block">6th block</option>
+       <option value="7th block">7th block</option>
+       <option value="8th block">8th block</option>
+       <option value="Sarojini hostel">Sarojini hostel</option>
+       </select>
+       <!-- </div> -->
+       <!-- <div class="col-md-4"> -->
+       <h4>Floor</h4>
+       <select name="dropdown2">
+       <option value="0" selected>0</option>
+       <option value="1">1</option>
+       <option value="2">2</option>
+       <option value="3">3</option>
+       <option value="4">4</option>
+       <option value="5">5</option>
+       <option value="6">6</option>
+       <option value="7">7</option>
+       <option value="8">8</option>
+       <option value="9">9</option>
+       </select>
+ <!--       </div>
+</div> -->
+<br/>
+<br/>
+<h4>Select your problem</h4>
+
+<select name="dropdown3">
+    <!-- 
+<option value="Lift not working" selected>Lift not working</option>
+<option value="Water coolers empty">Water coolers empty</option>
+<option value="Mosquitoes">Mosquitoes</option>
+<option value="No clean drinking water">No clean drinking water</option>
+<option value="Toilets/rooms/corridors not cleaned">Toilets/rooms/corridors not cleaned</option> -->
+
+<option value="Lift not working">Lift not working</option>
+<option value="Water coolers">Water coolers empty</option>
+<option value="Mosquitoes Problems">Mosquitoes</option>
+<option value="No clean drinking water">No clean drinking water</option>
+<option value="Rooms/corridors not cleaned">Rooms/corridors not cleaned</option>
+<option value="others">Others</option> 
+
+
+</select>
+<br/>
+<br/>
+<h4>Describe your problem*</h4>
+<p>( not more than 50 words )</p>
+<textarea rows="5" cols="30" name="description" maxlength="200" required>
+</textarea>
+ <!-- <?//echo $error;?> -->
+<h4>Wanna Upload an Image??</h4>
+<!-- <?php //echo form_open_multipart('user_controller/do_upload');?> -->
+
+<input type="file" name="userfile" size="20" />
+
+<br /><br />
+
+<!-- <input type="submit" value="upload" /> -->
+<!-- </form> -->
+
+ <input type="submit" value="submit" class="btn btn-success btn-block">
+
+</form>
 </div>
+<!-- <div class="col-md-4"> -->
+<!-- </div> -->
 </div>
-<script type="text/javascript">
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-40721121-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
 </body>
 </html>

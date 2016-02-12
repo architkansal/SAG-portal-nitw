@@ -25,7 +25,7 @@ class user_model extends CI_Controller
     $data['details']=$this->input->post('details');
     $data['tag_id']= $this->input->post('dropdown');
     $data['preftime'] =$this->input->post('time');
-    print_r($data);
+    // print_r($data);
     $this->db->insert('complaint',$data);
     
    
@@ -55,12 +55,13 @@ class user_model extends CI_Controller
   {
     $q=1;
     // echo($hcdid);
-    $this->db->select('complaint.user_id,complaint.cid,complaint.status,users.name,users.contact');
+    $this->db->select('complaint.user_id,complaint.cid,complaint.status,users.name,complaint.mobile');
     $this->db->from('complaint');
     $this->db->join('users','users.id=complaint.user_id');
     $this->db->where('complaint.hcdid',$hcdid);
     $this->db->where('complaint.status',0);
     $this->db->or_where('complaint.status',-1);
+    $this->db->or_where('complaint.status',1);
     $this->db->or_where('complaint.status',2);
     
     $grp=$this->db->get();
@@ -119,8 +120,9 @@ class user_model extends CI_Controller
   function get_grievances()
   {
 
-      $this ->db-> select('*')->from('grievances')//->join('imgtable' , 'grievances.gid=imgtable.gid')
-      ->where('status' , '0');
+      $this->db-> select('*')->from('grievances') //->join('imgtable' , 'grievances.gid=imgtable.gid')
+                -> where('status' , '0')
+                -> or_where('status' ,'1');
       $grp=$this->db->get();
       $res=$grp->result_array();
       $res2=$grp->result();
@@ -251,7 +253,7 @@ class user_model extends CI_Controller
 
    function show_my_complaints($id)
    {
-    $this->db->select('cid,date,hcdid,preftime,details,status')
+    $this->db->select('cid,date,hcdid,preftime,details,status,mobile,user_id')
              ->from('complaint')
              ->where('user_id',$id);
     $query=$this->db->get();
@@ -275,4 +277,95 @@ class user_model extends CI_Controller
     return($query->result_array());
   }
 
+    function get_all()
+    {
+        $this ->db-> select('*')->from('grievances')//->join('imgtable' , 'grievances.gid=imgtable.gid')
+                  -> where('status' , '0')
+                  -> or_where('status' ,'1');
+      $grp=$this->db->get();
+      $res=$grp->result_array();
+      $res2=$grp->result();
+      // print_r($res);
+      $delimiter=",";
+      $newline="\r\n";
+      // echo $this->dbutil->csv_from_result($grp,$delimiter,$newline);
+
+      return $res;
+    }
+
+    function mosquitoes()
+    {
+      $this ->db-> select('*')->from('grievances')//->join('imgtable' , 'grievances.gid=imgtable.gid')
+                  -> where('tag' , 'Mosquitoes Problems');
+      $grp=$this->db->get();
+      $res=$grp->result_array();
+      $res2=$grp->result();
+      // print_r($res);
+      $delimiter=",";
+      $newline="\r\n";
+      // echo $this->dbutil->csv_from_result($grp,$delimiter,$newline);
+
+      return $res;
+    }
+
+    function lift()
+    {
+      $this ->db-> select('*')->from('grievances')//->join('imgtable' , 'grievances.gid=imgtable.gid')
+                  -> where('tag' , 'Lift not working');
+      $grp=$this->db->get();
+      $res=$grp->result_array();
+      $res2=$grp->result();
+      // print_r($res);
+      $delimiter=",";
+      $newline="\r\n";
+      // echo $this->dbutil->csv_from_result($grp,$delimiter,$newline);
+
+      return $res;
+    }
+
+    
+    function water_cooler()
+    {
+      $this ->db-> select('*')->from('grievances')//->join('imgtable' , 'grievances.gid=imgtable.gid')
+                  -> where('tag' , 'Water coolers');
+      $grp=$this->db->get();
+      $res=$grp->result_array();
+      $res2=$grp->result();
+      // print_r($res);
+      $delimiter=",";
+      $newline="\r\n";
+      // echo $this->dbutil->csv_from_result($grp,$delimiter,$newline);
+
+      return $res;
+    }
+       
+    function drinking_water()
+    {
+      $this ->db-> select('*')->from('grievances')//->join('imgtable' , 'grievances.gid=imgtable.gid')
+                  -> where('tag' , 'No clean drinking water');
+      $grp=$this->db->get();
+      $res=$grp->result_array();
+      $res2=$grp->result();
+      // print_r($res);
+      $delimiter=",";
+      $newline="\r\n";
+      // echo $this->dbutil->csv_from_result($grp,$delimiter,$newline);
+
+      return $res;
+    }
+
+    function cleanliness()
+    {
+      $this ->db-> select('*')->from('grievances')//->join('imgtable' , 'grievances.gid=imgtable.gid')
+                  -> where('tag' , 'Rooms/corridors not cleaned');
+      $grp=$this->db->get();
+      $res=$grp->result_array();
+      $res2=$grp->result();
+      // print_r($res);
+      $delimiter=",";
+      $newline="\r\n";
+      // echo $this->dbutil->csv_from_result($grp,$delimiter,$newline);
+
+      return $res;
+    }
 }

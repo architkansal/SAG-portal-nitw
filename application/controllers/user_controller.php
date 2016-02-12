@@ -93,32 +93,44 @@ class user_controller extends CI_Controller
 
 	function electrician()
 	{
+		// $this->load->view('templates/header.html');
 		$this->load->view('user/electrician.html');
+		// $this->load->view('templates/footer.html');
 	}
 
 	function carpenter()
 	{
+		// $this->load->view('templates/header.html');
 		$this->load->view('user/carpenter.html');
+		// $this->load->view('templates/footer.html');
 	}
 
 	function plumber()
 	{
+		// $this->load->view('templates/header.html');
 		$this->load->view('user/plumber.html');
+		// $this->load->view('templates/footer.html');
 	}
 
 	function lan()
 	{
+		// $this->load->view('templates/header.html');
 		$this->load->view('user/lan.html');
+		// $this->load->view('templates/footer.html');
 	}
 
 	function hostelg()
 	{
+		// $this->load->view('templates/header.html');
 		$this->load->view('user/hostelg.html');
+		// $this->load->view('templates/footer.html');
 	}
 
 	function messg()
 	{
+		// $this->load->view('templates/header.html');
 		$this->load->view('user/messg.html');
+		// $this->load->view('templates/footer.html');
 	}
 
 	function submit_complaint()   ///complaint form submit
@@ -391,15 +403,20 @@ class user_controller extends CI_Controller
 	}
 
 
-	function table()
-	{
-		if(!$this->tank_auth->is_logged_in())
-				redirect('auth/login');
-		$this->load->view('table/table.html');
-	}
+	// function table()
+	// {
+	// 	if(!$this->tank_auth->is_logged_in())
+	// 			redirect('auth/login');
+
+	// 	$hcdid='44';
+	// 	$arr['det']= $this->fetch_complaints($hcdid);
+	// 	$this->load->view('templates/header.html');
+	// 	$this->load->view('table/table.html',$arr);
+	// 	$this->load->view('templates/footer.html');
+	// }
 
 
-	function all_problems()
+	function all_problems()        //grievances
 	{
 		if(!$this->tank_auth->is_logged_in())
 				redirect('auth/login');
@@ -411,12 +428,12 @@ class user_controller extends CI_Controller
 	}
 
 
-	function elec_problems()
+	function mosquitoes()		//grievances
 	{
 		if(!$this->tank_auth->is_logged_in())
 				redirect('auth/login');
 		$this->load->model('user_model');
-		$res['index'] = $this->user_model->get_elec();
+		$res['index'] = $this->user_model->mosquitoes();
 		$this->load->view('templates/header.html');
 		$this->load->view('user/timeline.html',$res);
 		$this->load->view('templates/footer.html');
@@ -424,12 +441,12 @@ class user_controller extends CI_Controller
 	}
 
 
-	function lan_problems()
+	function lift()			//grievances
 	{
 		if(!$this->tank_auth->is_logged_in())
 				redirect('auth/login');
 		$this->load->model('user_model');
-		$res['index'] = $this->user_model->get_lan();
+		$res['index'] = $this->user_model->lift();
 		$this->load->view('templates/header.html');
 		$this->load->view('user/timeline.html',$res);
 		$this->load->view('templates/footer.html');
@@ -437,12 +454,12 @@ class user_controller extends CI_Controller
 	}
 
 
-	function car_problems()
+	function water_cooler()			//grievances
 	{
 		if(!$this->tank_auth->is_logged_in())
 				redirect('auth/login');
 		$this->load->model('user_model');
-		$res['index'] = $this->user_model->get_grievances();
+		$res['index'] = $this->user_model->water_cooler();
 		$this->load->view('templates/header.html');
 		$this->load->view('user/timeline.html',$res);
 		$this->load->view('templates/footer.html');
@@ -450,16 +467,29 @@ class user_controller extends CI_Controller
 	}
 
 
-	function plum_problems()
+	function drinking_water()		//grievances
 	{
 		if(!$this->tank_auth->is_logged_in())
 				redirect('auth/login');
 		$this->load->model('user_model');
-		$res['index'] = $this->user_model->get_grievances();
+		$res['index'] = $this->user_model->drinking_water();
 		$this->load->view('templates/header.html');
 		$this->load->view('user/timeline.html',$res);
 		$this->load->view('templates/footer.html');
 	}
+
+
+	function cleanliness()		//grievances
+	{
+		if(!$this->tank_auth->is_logged_in())
+				redirect('auth/login');
+		$this->load->model('user_model');
+		$res['index'] = $this->user_model->cleanliness();
+		$this->load->view('templates/header.html');
+		$this->load->view('user/timeline.html',$res);
+		$this->load->view('templates/footer.html');
+	}
+
 
 	function complaint_resolved()
 	{
@@ -471,7 +501,7 @@ class user_controller extends CI_Controller
 	    $this->admin_model->status_change($cid,'1');
 	    date_default_timezone_set('Asia/Kolkata');
 	     $tym = date('Y-m-d H:i:s');
-	     print($tym." The complaint is updated as resolved");
+	     echo($tym." The complaint is updated as resolved");
 
 	}
 
