@@ -304,44 +304,44 @@ class user_controller extends CI_Controller
 
 
 
-  function resolved()
-  {
-  	if(!$this->tank_auth->is_logged_in())
-			redirect('auth/login');
-   $cid=$_GET['cid'];
-   //echo $cid;
-    $this->load->model('admin_model');
-    $this->admin_model->status_change($cid,'1');
-    echo('<h2> Status Updated Successfully. <a href ="http://localhost/SAG-portal-nitw/index.php/user_controller" > click here </a> to go back</h2>');
-    //$this->load->view('rahul/message.html'); ///temperory
-   // $this->load->view('rahul/complaint_discription.html',$data);
+ //  function resolved()
+ //  {
+ //  	if(!$this->tank_auth->is_logged_in())
+	// 		redirect('auth/login');
+ //   $cid=$_GET['cid'];
+ //   //echo $cid;
+ //    $this->load->model('admin_model');
+ //    $this->admin_model->status_change($cid,'1');
+ //    echo('<h2> Status Updated Successfully. <a href ="http://localhost/SAG-portal-nitw/index.php/user_controller" > click here </a> to go back</h2>');
+ //    //$this->load->view('rahul/message.html'); ///temperory
+ //   // $this->load->view('rahul/complaint_discription.html',$data);
 
-  }
-  function postpone()
-  {
-  	if(!$this->tank_auth->is_logged_in())
-			redirect('auth/login');
-   $cid=$_GET['cid'];
-   //echo $cid;
-    $this->load->model('admin_model');
-    $this->admin_model->status_change($cid,'2');
-    echo('<h2> Status Updated Successfully. <a href ="http://localhost/SAG-portal-nitw/index.php/user_controller" > click here </a> to go back</h2>');
-    //$this->load->view('rahul/message.html'); ///temperory
-   // $this->load->view('rahul/complaint_discription.html',$data);
-	}
+ //  }
+ //  function postpone()
+ //  {
+ //  	if(!$this->tank_auth->is_logged_in())
+	// 		redirect('auth/login');
+ //   $cid=$_GET['cid'];
+ //   //echo $cid;
+ //    $this->load->model('admin_model');
+ //    $this->admin_model->status_change($cid,'2');
+ //    echo('<h2> Status Updated Successfully. <a href ="http://localhost/SAG-portal-nitw/index.php/user_controller" > click here </a> to go back</h2>');
+ //    //$this->load->view('rahul/message.html'); ///temperory
+ //   // $this->load->view('rahul/complaint_discription.html',$data);
+	// }
 
-	function deleted()
-  {
-  	if(!$this->tank_auth->is_logged_in())
-			redirect('auth/login');
-   $cid=$_GET['cid'];
-   //echo $cid;
-    $this->load->model('admin_model');
-    $this->admin_model->status_change($cid,'-1');
-    //$this->load->view('rahul/message.html'); ///temperory
-   // $this->load->view('rahul/complaint_discription.html',$data);
-    echo('<h2> Status Updated Successfully. <a href ="http://localhost/SAG-portal-nitw/index.php/user_controller" > click here </a> to go back</h2>');
-  }
+	// function deleted()
+ //  {
+ //  	if(!$this->tank_auth->is_logged_in())
+	// 		redirect('auth/login');
+ //   $cid=$_GET['cid'];
+ //   //echo $cid;
+ //    $this->load->model('admin_model');
+ //    $this->admin_model->status_change($cid,'-1');
+ //    //$this->load->view('rahul/message.html'); ///temperory
+ //   // $this->load->view('rahul/complaint_discription.html',$data);
+ //    echo('<h2> Status Updated Successfully. <a href ="http://localhost/SAG-portal-nitw/index.php/user_controller" > click here </a> to go back</h2>');
+ //  }
 
 
 
@@ -502,6 +502,34 @@ class user_controller extends CI_Controller
 	    date_default_timezone_set('Asia/Kolkata');
 	     $tym = date('Y-m-d H:i:s');
 	     echo($tym." The complaint is updated as resolved");
+
+	}
+
+	function complaint_postponed()
+	{
+		// echo ("fjkqhwoi eklqgh ");
+		if(!$this->tank_auth->is_logged_in())
+			redirect('auth/login');
+	   $cid=$_POST['cid'];
+	    $this->load->model('admin_model');
+	    $this->admin_model->status_change($cid,'2');
+	    date_default_timezone_set('Asia/Kolkata');
+	     $tym = date('Y-m-d H:i:s');
+	     echo($tym." The complaint is updated as postponed");
+
+	}
+
+	function complaint_deleted()
+	{
+		// echo ("fjkqhwoi eklqgh ");
+		if(!$this->tank_auth->is_logged_in())
+			redirect('auth/login');
+	   $cid=$_POST['cid'];
+	    $this->load->model('admin_model');
+	    $this->admin_model->status_change($cid,'-1');
+	    date_default_timezone_set('Asia/Kolkata');
+	     $tym = date('Y-m-d H:i:s');
+	     echo($tym." The complaint is updated as deleted");
 
 	}
 
