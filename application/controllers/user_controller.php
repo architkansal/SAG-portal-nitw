@@ -180,7 +180,7 @@ class user_controller extends CI_Controller
 	else if($q==5)
 	{
 		$hcdid='55';
-		$arr['det']= $this->fetch_complaints($hcdid);
+		$arr['det']= $this->fetch_grievences($hcdid);
 		$this->load->view('templates/header.html');
 		$this->load->view('admin/hostelg_admin.html',$arr);
 		$this->load->view('templates/footer.html');
@@ -189,11 +189,30 @@ class user_controller extends CI_Controller
 	else if($q==6)
 	{
 		$hcdid='66';
-		$arr['det']= $this->fetch_complaints($hcdid);
+		$arr['det']= $this->fetch_grievences($hcdid);
 		$this->load->view('templates/header.html');
 		$this->load->view('admin/messg_admin.html',$arr);
 		$this->load->view('templates/footer.html');
 	}
+
+
+	// else if($q==5)
+	// {
+	// 	$hcdid='55';
+	// 	$arr['det']= $this->fetch_complaints($hcdid);
+	// 	$this->load->view('templates/header.html');
+	// 	$this->load->view('admin/hostelg_admin.html',$arr);
+	// 	$this->load->view('templates/footer.html');
+	// }
+	
+	// else if($q==6)
+	// {
+	// 	$hcdid='66';
+	// 	$arr['det']= $this->fetch_complaints($hcdid);
+	// 	$this->load->view('templates/header.html');
+	// 	$this->load->view('admin/messg_admin.html',$arr);
+	// 	$this->load->view('templates/footer.html');
+	// }
 	
  
   }
@@ -208,6 +227,14 @@ class user_controller extends CI_Controller
     return $res;
   }
 
+function fetch_grievences($hcdid)
+  {
+  	if(!$this->tank_auth->is_logged_in())
+			redirect('auth/login');
+    $this->load->model('user_model');
+    $res=$this->user_model->get_grievences($hcdid);
+    return $res;
+  }
 
 
 	function do_upload()
